@@ -2,7 +2,7 @@
 
 namespace WidgetsJSON
 {
-    public class Specification
+    public class Specification : JSONDataType
     {
         private string? _name;
         private double? _price;
