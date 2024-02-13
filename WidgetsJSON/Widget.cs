@@ -11,6 +11,18 @@ namespace WidgetsJSON
         private bool? _isAvailable;
         private DateTime? _manufactureDate;
         private List<Specification>? _specifications;
+        private Widget() { }
+
+        public Widget(string? id, string? name, int? quantity, double? price, bool? isAvailable, DateTime? manufactureDate, List<Specification>? specifications)
+        {
+            Id = id;
+            Name = name;
+            Quantity = quantity;
+            Price = price;
+            IsAvailable = isAvailable;
+            ManufactureDate = manufactureDate;
+            Specifications = specifications;
+        }
 
         [JsonPropertyName("widgetId")]
         public string? Id { get { return _id; } private set { _id = value; } }
@@ -34,17 +46,5 @@ namespace WidgetsJSON
         [JsonPropertyName("specifications")]
         public List<Specification>? Specifications { get { return _specifications; } private set { _specifications = value; } }
 
-        private Widget() { }
-
-        public Widget(string? id, string? name, int? quantity, double? price, bool? isAvailable, DateTime? manufactureDate, List<Specification>? specifications)
-        {
-            Id = id;
-            Name = name;
-            Quantity = quantity;
-            Price = price;
-            IsAvailable = isAvailable;
-            ManufactureDate = manufactureDate;
-            Specifications = specifications;
-        }
     }
 }
