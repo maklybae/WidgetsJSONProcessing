@@ -6,19 +6,17 @@
 
         private string _originalJsonFileName = "tmp.json";
         private DateTime _previusHappened = DateTime.MinValue;
-        private readonly List<JSONDataType> _trackedData = new();
 
         private AutoSaver() { }
 
-        public AutoSaver(string originalJsonFileName, List<JSONDataType> dataToTrack)
+        public AutoSaver(string originalJsonFileName)
         {
             OriginalJsonFileName = originalJsonFileName;
-            _trackedData = dataToTrack;
         }
 
         public string OriginalJsonFileName { get { return _originalJsonFileName; } set { _originalJsonFileName = value; } }
 
-        public void OnUpdatedEventHandler(object? sender, UpdatedEventArgs e)
+        private void OnUpdatedEventHandler(object? sender, UpdatedEventArgs e)
         { 
             if ((e.Happened - _previusHappened).TotalSeconds <= MaxDelayInSeconds)
             {
@@ -28,7 +26,7 @@
             _previusHappened = e.Happened;
         }
 
-        public void Save() { }
+        private void Save() { }
 
         public void Register(JSONDataType obj) =>
             obj.Updated += OnUpdatedEventHandler;
