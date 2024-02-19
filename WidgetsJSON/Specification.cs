@@ -35,7 +35,8 @@ namespace WidgetsJSON
                 {
                     throw new ArgumentException("Name cannot be null or empty", nameof(value));
                 }
-                _name = value; 
+                _name = value;
+                OnUpdated(new UpdatedEventArgs());
             }
         }
 
@@ -50,6 +51,7 @@ namespace WidgetsJSON
                     throw new ArgumentException("Price should be greater than zero", nameof(value));
                 }
                 _price = value; 
+                OnUpdated(new UpdatedEventArgs());
             } 
         }
 
@@ -64,6 +66,7 @@ namespace WidgetsJSON
                     throw new ArgumentException("Custom flag should have a value (true/false)", nameof(value));
                 }
                 _isCustom = (bool)value;
+                OnUpdated(new UpdatedEventArgs());
             } 
         }
 
