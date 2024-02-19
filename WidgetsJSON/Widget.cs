@@ -38,6 +38,8 @@ namespace WidgetsJSON
             Specifications = specifications;
         }
 
+        public event EventHandler<PriceChangedEventArgs>? PriceChanged;
+
         [JsonPropertyName("widgetId")]
         public string Id
         { 
@@ -139,6 +141,11 @@ namespace WidgetsJSON
                 }
                 _specifications = new(value);
             }
+        }
+
+        protected virtual void OnPriceChanged(PriceChangedEventArgs e)
+        {
+            PriceChanged?.Invoke(this, e);
         }
     }
 }
