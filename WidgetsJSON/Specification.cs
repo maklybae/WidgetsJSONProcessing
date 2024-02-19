@@ -1,15 +1,24 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace WidgetsJSON
 {
     public class Specification : JSONDataType
     {
-        private string? _name;
-        private double? _price;
-        private bool? _isCustom;
+        private string _name = string.Empty;
+        private double _price = default;
+        private bool _isCustom = default;
         private Specification() { }
 
-        public Specification(string? name, double? price, bool? isCustom)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <param name="isCustom"></param>
+        /// <exception cref="JsonException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public Specification(string name, double price, bool? isCustom)
         {
             Name = name;
             Price = price;
@@ -17,13 +26,46 @@ namespace WidgetsJSON
         }
 
         [JsonPropertyName("specName")]
-        public string? Name { get { return _name; } private set { _name = value; } }
+        public string Name 
+        { 
+            get => _name;
+            set 
+            {
+                if (string.IsNullOrEmpty(_name))
+                {
+                    throw new ArgumentException("Name cannot be null or empty", nameof(value));
+                }
+                _name = value; 
+            }
+        }
 
         [JsonPropertyName("specPrice")]
-        public double? Price { get { return _price; } private set { _price = value; } }
+        public double Price 
+        { 
+            get => _price; 
+            set 
+            { 
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Price should be greater than zero", nameof(value));
+                }
+                _price = value; 
+            } 
+        }
 
         [JsonPropertyName("isCustom")]
-        public bool? IsCustom { get { return _isCustom; } private set { _isCustom = value; } }
+        public bool? IsCustom 
+        {
+            get => _isCustom;
+            set 
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("Custom flag should have a value (true/false)", nameof(value));
+                }
+                _isCustom = (bool)value;
+            } 
+        }
 
     }
 }

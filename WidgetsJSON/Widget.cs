@@ -1,19 +1,33 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace WidgetsJSON
 {
     public class Widget : JSONDataType
     {
-        private string? _id;
-        private string? _name;
-        private int? _quantity;
-        private double? _price;
-        private bool? _isAvailable;
-        private DateTime? _manufactureDate;
-        private List<Specification>? _specifications;
+        private string _id = string.Empty;
+        private string _name = string.Empty;
+        private int _quantity = default;
+        private double _price = default;
+        private bool _isAvailable = default;
+        private DateTime _manufactureDate = default;
+        private List<Specification> _specifications = new();
+
         private Widget() { }
 
-        public Widget(string? id, string? name, int? quantity, double? price, bool? isAvailable, DateTime? manufactureDate, List<Specification>? specifications)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="quantity"></param>
+        /// <param name="price"></param>
+        /// <param name="isAvailable"></param>
+        /// <param name="manufactureDate"></param>
+        /// <param name="specifications"></param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="JsonException"></exception>
+        public Widget(string id, string name, int quantity, double price, bool? isAvailable, DateTime manufactureDate, List<Specification> specifications)
         {
             Id = id;
             Name = name;
@@ -25,26 +39,101 @@ namespace WidgetsJSON
         }
 
         [JsonPropertyName("widgetId")]
-        public string? Id { get { return _id; } private set { _id = value; } }
+        public string Id
+        { 
+            get => _id;
+            private set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Id cannot be null or empty", nameof(value));
+                }
+                _id = value;
+            }
+        }
 
         [JsonPropertyName("name")]
-        public string? Name { get { return _name; } private set { _name = value; } }
+        public string Name
+        { 
+            get => _name;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Name cannot be null or empty", nameof(value));
+                }
+                _name = value;
+            }
+        }
 
         [JsonPropertyName("quantity")]
-        public int? Quantity { get { return _quantity; } private set { _quantity = value; } }
+        public int Quantity
+        { 
+            get => _quantity;
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Quantity should be greater than zero", nameof(value));
+                }
+                _quantity = value;
+            }
+        }
 
         [JsonPropertyName("price")]
-        public double? Price { get { return _price; } private set { _price = value; } }
+        public double Price
+        { 
+            get => _price;
+            set 
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Price should be greater than zero", nameof(value));
+                }
+                _price = value; 
+            }
+        }
 
         [JsonPropertyName("isAvailable")]
-        public bool? IsAvailable { get { return _isAvailable; } private set { _isAvailable = value; } }
+        public bool? IsAvailable {
+            get => _isAvailable;
+            set 
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("Available flag should have a value (true/false)", nameof(value));
+                }
+                _isAvailable = (bool)value; 
+            }
+        }
 
         [JsonPropertyName("manufactureDate")]
-        public DateTime? ManufactureDate { get { return _manufactureDate; } private set { _manufactureDate = value; } }
+        public DateTime ManufactureDate 
+        { 
+            get => _manufactureDate; 
+            set 
+            {
+                if (value.Year < 1900)
+                {
+                    throw new ArgumentException("The manufacture date should be later than 1990.", nameof(value));
+                }
+                _manufactureDate = value;
+            } 
+        }
 
         // Использовать копию для стороннего доступа, внутри -- поле.
         [JsonPropertyName("specifications")]
-        public List<Specification>? Specifications { get { return _specifications; } private set { _specifications = value; } }
-
+        public List<Specification> Specifications 
+        {
+            get => new(_specifications);
+            set 
+            {
+                if (value == null || value.Count == 0)
+                {
+                    throw new ArgumentException("Specification list should contain at least one specification", nameof(value));
+                }
+                _specifications = new(value);
+            }
+        }
     }
 }
