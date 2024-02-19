@@ -31,7 +31,7 @@ namespace WidgetsJSON
             get => _name;
             set 
             {
-                if (string.IsNullOrEmpty(_name))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Name cannot be null or empty", nameof(value));
                 }
