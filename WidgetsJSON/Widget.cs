@@ -132,7 +132,7 @@ namespace WidgetsJSON
         [JsonPropertyName("specifications")]
         public List<Specification> Specifications 
         {
-            get => new(_specifications);
+            get => _specifications;
             set 
             {
                 if (value == null || value.Count == 0)

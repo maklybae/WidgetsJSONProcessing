@@ -9,7 +9,7 @@ public class Database
     private readonly AutoSaver? _autoSaver;
     private readonly PriceRedistributor? _priceRedistributor;
    
-    private Database()
+    public Database()
     {
         _data = new();
         _originFilePath = string.Empty;
