@@ -2,13 +2,14 @@
 
 public class RequestProcessor
 {
-    private Database _database;
-    
-    private RequestProcessor() =>
-        _database = new();
+    private Database? _database;
+
+    public RequestProcessor() { }
 
     public RequestProcessor(string filePath) =>
         _database = new Database(filePath);
+
+    public bool IsReady => _database != null;
 
     public void RebaseProcessor(string filePath) =>
         _database = new Database(filePath);
@@ -18,6 +19,11 @@ public class RequestProcessor
         if (replacingVlaue == null)
         {
             throw new ArgumentNullException(nameof(replacingVlaue));
+        }
+
+        if (_database == null)
+        {
+            throw new ArgumentNullException(nameof(_database));
         }
 
         switch(fieldName)
@@ -49,6 +55,11 @@ public class RequestProcessor
         if (replacingVlaue == null)
         {
             throw new ArgumentNullException(nameof(replacingVlaue));
+        }
+
+        if (_database == null)
+        {
+            throw new ArgumentNullException(nameof(_database));
         }
 
         switch (fieldName) { 

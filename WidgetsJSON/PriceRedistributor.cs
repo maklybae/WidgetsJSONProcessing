@@ -8,7 +8,7 @@ namespace WidgetsJSON
 
         private void OnPriceChangedEventHandler(object? sender, PriceChangedEventArgs e)
         {
-            var widget = sender as Widget ?? throw new InvalidCastException("Sender should be a Widget and not null");
+            var widget = sender as Widget ?? throw new ArgumentException("Sender should be a Widget and not null");
             if (!TryRedistributePrice(e.Difference, widget))
             {
                 throw new ArgumentException("Cannot redistribute price for the given widget", nameof(sender));
