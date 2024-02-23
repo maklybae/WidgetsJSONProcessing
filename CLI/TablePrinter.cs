@@ -5,7 +5,8 @@ namespace CLI;
 
 internal static class TablePrinter
 {
-    private const int MaxColumnsInConsole = 3;
+    private const int DefaultColumnsInConsole = 4;
+    private static readonly int s_maxColumnsInConsole = Controller.Request.FieldsCount;
 
     /// <summary>
     /// Shows a table view with auto-width console output.
@@ -57,7 +58,7 @@ internal static class TablePrinter
         // Estimate
         int currentFirstColumn = 0;
         int countColumns = tableData.headings.Length;
-        int currentLastColumn = Math.Min(countColumns, MaxColumnsInConsole);
+        int currentLastColumn = Math.Min(countColumns, DefaultColumnsInConsole);
 
         int prevWidth = Console.WindowWidth;
         PrintTableView(tableData, prevWidth, currentFirstColumn, currentLastColumn);
@@ -91,6 +92,25 @@ internal static class TablePrinter
                     {
                         currentFirstColumn++;
                         currentLastColumn++;
+                        PrintTableView(tableData, prevWidth, currentFirstColumn, currentLastColumn);
+                    }
+                }
+                else if (ck == ConsoleKey.UpArrow)
+                {
+                    if (currentLastColumn - 1 - currentFirstColumn >= 1)
+                    {
+                        currentLastColumn--;
+                        PrintTableView(tableData, prevWidth, currentFirstColumn, currentLastColumn);
+                    }
+                }
+                else if (ck == ConsoleKey.DownArrow)
+                {
+                    if (currentLastColumn + 1 - currentFirstColumn >= 1)
+                    {
+                        if (currentLastColumn + 1 <= s_maxColumnsInConsole)
+                            currentLastColumn++;
+                        else if (currentFirstColumn - 1 >= 0)
+                            currentFirstColumn--;
                         PrintTableView(tableData, prevWidth, currentFirstColumn, currentLastColumn);
                     }
                 }
