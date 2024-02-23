@@ -75,14 +75,26 @@ internal class ChangeWidgetPage : MenuPage
 
     private void ChangeIsAvailable()
     {
-
         Controller.Request.ChangeIsAvailaleByWidgetNum(Controller.Selector.WidgetNum,
             ConsoleDialog.InputBooleanField("IsAvailable"));
         ConsoleOutput.PrintSuccess();
         UpdateButtons();
     }
 
-    private void ChangeManufactureDate() { }
+    private void ChangeManufactureDate()
+    {
+        try
+        {
+            Controller.Request.ChangeManufactureDateByWidgetNum(Controller.Selector.WidgetNum,
+                ConsoleDialog.InputDateTimeField("ManufactureDate"));
+            ConsoleOutput.PrintSuccess(true);
+            UpdateButtons();
+        }
+        catch (ArgumentException e)
+        {
+            ConsoleOutput.PrintIssue(e.Message, string.Empty, true);
+        }
+    }
 
     private void ChangeSpecifications()
     {

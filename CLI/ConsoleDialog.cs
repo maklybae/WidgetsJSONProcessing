@@ -56,4 +56,11 @@ internal class ConsoleDialog
         Console.Write($"Input double field \"{requestedName}\": ");
         return ConsoleInput.InputDoubleInRange(int.MinValue, int.MaxValue);
     }
+
+    internal static DateTime InputDateTimeField(string requestedName)
+    {
+        Console.WriteLine();
+        Console.Write($"Input DateTime field \"{requestedName}\" in format DD/MM/YYYY hh:mm:ss :");
+        return ConsoleInput.InputDateTime();
+    }
 }

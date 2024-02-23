@@ -4,10 +4,22 @@ namespace Model;
 
 public class Database
 {
+    public const int FieldsCount = 7;
+
     private readonly List<Widget> _data;
     private readonly string _originFilePath;
     private readonly AutoSaver? _autoSaver;
     private readonly PriceRedistributor? _priceRedistributor;
+    private static readonly string[] s_jsonFieldsNames = new string[]
+    {
+        "widgetId",
+        "name",
+        "quantity",
+        "price",
+        "isAvailable",
+        "manufactureDate",
+        "specifications"
+    };
    
     public Database()
     {
@@ -30,6 +42,8 @@ public class Database
 
         RegisterSubscribers();
     }
+
+    public static string[] JsonFieldsNames => s_jsonFieldsNames;
 
     public List<Widget> Data => _data;
 

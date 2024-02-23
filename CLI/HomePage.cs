@@ -17,10 +17,10 @@ internal class HomePage : MenuPage
         Buttons = new()
         {
             (MoveToChangeDataMenu, new ButtonArgs("Change Data")),
-            //(MoveToDataOutputMenu, new ButtonArgs("Data Output")),
+            (ShowCurrentTableData, new ButtonArgs("Show data in table-view")),
             //(MoveToSelectionMenu, new ButtonArgs("Selecting")),
             //(MoveToSortingMenu, new ButtonArgs("Sorting")),
-            //(MoveToSettinUpMenu, new ButtonArgs("Set up configuration")),
+            (MoveToSettinUpMenu, new ButtonArgs("Set up configuration")),
             //(MoveToHelp, new ButtonArgs("Help")),
             (Exit, new ButtonArgs("Exit"))
         };
@@ -34,9 +34,12 @@ internal class HomePage : MenuPage
     }
 
     /// <summary>
-    ///// Moves to the data output menu by adding it to the menu stack.
-    ///// </summary>
-    //private void MoveToDataOutputMenu() => Contorller.AddMenuPageToStack(new PrintingPage());
+    /// Moves to the data output menu by adding it to the menu stack.
+    /// </summary>
+    private void ShowCurrentTableData()
+    {
+        TablePrinter.ShowTableView((Controller.Request.AltenativeFieldsNames, DataConverter.ConvertToJaggedArray(Controller.Request.GetAllItems())));
+    }
 
     ///// <summary>
     ///// Moves to the selection menu by adding it to the menu stack.
@@ -48,10 +51,10 @@ internal class HomePage : MenuPage
     ///// </summary>
     //private void MoveToSortingMenu() => Contorller.AddMenuPageToStack(new SortingPage());
 
-    ///// <summary>
-    ///// Moves to the configuration setup menu by adding it to the menu stack.
-    ///// </summary>
-    //private void MoveToSettinUpMenu() => Contorller.AddMenuPageToStack(new SettingUpPage());
+    /// <summary>
+    /// Moves to the configuration setup menu by adding it to the menu stack.
+    /// </summary>
+    private void MoveToSettinUpMenu() => Controller.AddMenuPageToStack(new SettingUpPage());
 
     ///// <summary>
     ///// Prints the help page to the console.

@@ -43,7 +43,22 @@ internal class ConsoleInput
         }
         else
         {
-            throw new ArgumentException("Invalid input value. It may be too large integer or not an integer");
+            throw new ArgumentException("Invalid input value. It may be too large double or not a double");
+        }
+    }
+
+    internal static DateTime InputDateTime()
+    {
+        var input = InputStringWithCursor();
+
+        // Check whether it fulfills requirements.
+        if (DateTime.TryParse(input, out DateTime res))
+        {
+            return res;
+        }
+        else
+        {
+            throw new ArgumentException("Invalid input value. Check the correctness of format");
         }
     }
 }
