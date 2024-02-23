@@ -35,7 +35,9 @@ public class Database
 
     public string OriginFilePath => _originFilePath;
 
-    public string OriginFileName => Path.GetFileName(OriginFileName);   
+    public string OriginFileName => Path.GetFileName(OriginFileName);
+
+    public int Count => Data.Count;
     
     private void RegisterSubscribers()
     {

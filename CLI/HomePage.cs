@@ -1,4 +1,6 @@
-﻿namespace CLI;
+﻿using System.Net.Http.Headers;
+
+namespace CLI;
 /// <summary>
 /// Represents the home page menu with various options for data manipulation and program settings.
 /// </summary>
@@ -7,11 +9,14 @@ internal class HomePage : MenuPage
     /// <summary>
     /// Initializes a new instance of the <see cref="HomePage"/> class and sets up the initial options.
     /// </summary>
-    internal HomePage()
-    {
+    internal HomePage() =>
+        UpdateButtons();
 
+    internal override void UpdateButtons()
+    {
         Buttons = new()
         {
+            (MoveToChangeDataMenu, new ButtonArgs("Change Data")),
             //(MoveToDataOutputMenu, new ButtonArgs("Data Output")),
             //(MoveToSelectionMenu, new ButtonArgs("Selecting")),
             //(MoveToSortingMenu, new ButtonArgs("Sorting")),
@@ -19,6 +24,13 @@ internal class HomePage : MenuPage
             //(MoveToHelp, new ButtonArgs("Help")),
             (Exit, new ButtonArgs("Exit"))
         };
+    }
+
+    private void MoveToChangeDataMenu()
+    {
+        Controller.ClearSelector();
+        Controller.AddMenuPageToStack(new ChangeWidgetPage());
+        Controller.AddMenuPageToStack(new ChooseToChangePage(ChooseToChangePage.DataTypeToChoose.ChooseWidget));
     }
 
     /// <summary>

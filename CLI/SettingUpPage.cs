@@ -5,7 +5,9 @@ internal class SettingUpPage : MenuPage
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingUpPage"/> class.
     /// </summary>
-    internal SettingUpPage()
+    internal SettingUpPage() => UpdateButtons();
+
+    internal override void UpdateButtons()
     {
         Buttons = new()
         {

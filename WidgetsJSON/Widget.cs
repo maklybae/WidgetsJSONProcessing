@@ -94,6 +94,7 @@ namespace WidgetsJSON
                 {
                     throw new ArgumentException("Price should be greater than zero", nameof(value));
                 }
+                OnPriceChanged(new PriceChangedEventArgs(value - _price));
                 _price = value; 
                 OnUpdated(new UpdatedEventArgs());
             }

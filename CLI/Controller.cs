@@ -6,6 +6,7 @@ using Model;
 internal static class Controller
 {
     private static RequestProcessor _request = new();
+    private static WidgetSpecificationSelector _selector = new();
     
     private static Stack<MenuPage> MenuPagesStack { get; }
 
@@ -20,6 +21,15 @@ internal static class Controller
     }
 
     internal static RequestProcessor Request => _request;
+    internal static WidgetSpecificationSelector Selector => _selector;
+
+    internal static void AddWidgetNumToSelector(int widgetNum) =>
+        _selector.WidgetNum = widgetNum;
+
+    internal static void AddSpecificationNumToSelector(int specificationNum) =>
+        _selector.SpecificationNum = specificationNum;
+
+    internal static void ClearSelector() => _selector = new();
 
     /// <summary>
     /// Method to add a new menu page to the stack.
@@ -32,14 +42,16 @@ internal static class Controller
     /// </summary>
     internal static void PopMenuPageFromStack() => MenuPagesStack.Pop();
 
+    internal static MenuPage PeekMenuPageFromStack() => MenuPagesStack.Peek();
+
     /// <summary>
     /// Method to clear all data usage properties.
     /// </summary>
     internal static void ClearAll()
     {
         MenuPagesStack.Clear();
-        //MenuPagesStack.Push(new HomePage());
-        //MenuPagesStack.Push(new SettingUpPage());
+        MenuPagesStack.Push(new HomePage());
+        MenuPagesStack.Push(new SettingUpPage());
         _request = new();
     }
 
@@ -48,16 +60,16 @@ internal static class Controller
     /// </summary>
     internal static void ShowMenu()
     {
-        try
+        // Hide the cursor for a cleaner interface.
+        Console.CursorVisible = false;
+
+        // Print the initial help page with instructions.
+        //ConsoleDialog.PrintHelpPage();
+
+        // Continue showing the menu until the application exits.
+        while (true)
         {
-            // Hide the cursor for a cleaner interface.
-            Console.CursorVisible = false;
-
-            // Print the initial help page with instructions.
-            //ConsoleDialog.PrintHelpPage();
-
-            // Continue showing the menu until the application exits.
-            while (true)
+            try
             {
                 // Get the current menu page from the top of the stack.
                 MenuPage currentPage = MenuPagesStack.Peek();
@@ -77,12 +89,12 @@ internal static class Controller
                         break;
                 }
             }
-        }
-        // Proceeding unexpected behaviour of the program.
-        catch (Exception ex)
-        {
-            ConsoleOutput.PrintIssue($"Unexpected issue: {ex.Message}", "Try again", true);
-            ClearAll();
+            // Proceeding unexpected behaviour of the program.
+            catch (Exception ex)
+            {
+                ConsoleOutput.PrintIssue($"Unexpected issue: {ex.Message}", "Try again", true);
+                ClearAll();
+            }
         }
     }
 }

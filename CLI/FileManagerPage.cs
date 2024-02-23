@@ -18,7 +18,7 @@ internal class FileManagerPage : MenuPage
     /// <summary>
     /// Updates the option list based on the current directory's content.
     /// </summary>
-    private void UpdateButtons()
+    internal override void UpdateButtons()
     {
         Buttons.Clear();
 

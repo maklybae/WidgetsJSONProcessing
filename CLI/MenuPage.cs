@@ -1,6 +1,6 @@
 ﻿namespace CLI;
 
-internal class MenuPage
+internal abstract class MenuPage
 {
     private List<(Action? buttonAction, ButtonArgs args)> _buttons;
 
@@ -13,7 +13,7 @@ internal class MenuPage
     protected List<(Action? buttonAction, ButtonArgs args)> Buttons
     {
         get { return _buttons; }
-        init { _buttons = value; }
+        set { _buttons = value; }
     }
 
     /// <summary>
@@ -37,6 +37,8 @@ internal class MenuPage
         _buttons = new();
     }
 
+    internal abstract void UpdateButtons();
+
     /// <summary>
     /// Draws the menu page on the console, highlighting the currently selected option.
     /// </summary>
@@ -45,10 +47,20 @@ internal class MenuPage
         ConsoleOutput.ClearBuffer();
         for (int i = 0; i < Buttons.Count; i++)
         {
-            if (i == CurrentOption)
-                ConsoleOutput.PrintSelected(Buttons[i].args.Name);
+            string textToPrint;
+            if (Buttons[i].args is PairButtonArgs)
+            {
+                textToPrint = 
+                    $"{((PairButtonArgs)Buttons[i].args).AdditionalInfo} : {Buttons[i].args.Name}";
+            }
             else
-                Console.WriteLine(Buttons[i].args.Name);
+            {
+                textToPrint = Buttons[i].args.Name;
+            }
+            if (i == CurrentOption)
+                ConsoleOutput.PrintSelected(textToPrint);
+            else
+                Console.WriteLine(textToPrint);
         }
     }
 

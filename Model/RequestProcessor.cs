@@ -14,65 +14,92 @@ public class RequestProcessor
     public void RebaseProcessor(string filePath) =>
         _database = new Database(filePath);
 
-    public void ChangeWidgetField(int widgetNum, string fieldName, object? replacingVlaue)
+    public List<(string id, string name)> WidgetsIdNamesPairs
     {
-        if (replacingVlaue == null)
+        get
         {
-            throw new ArgumentNullException(nameof(replacingVlaue));
-        }
-
-        if (_database == null)
-        {
-            throw new ArgumentNullException(nameof(_database));
-        }
-
-        switch(fieldName)
-        {
-            case "widgetId":
-                throw new ArgumentException("Cannot change this field (it is unique)", nameof(fieldName));
-            case "name" when replacingVlaue is string v:
-                _database.Data[widgetNum].Name = v;
-                break;
-            case "quantity" when replacingVlaue is int v:
-                _database.Data[widgetNum].Quantity = v;
-                break;
-            case "price" when replacingVlaue is double v:
-                _database.Data[widgetNum].Price = v;
-                break;
-            case "isAvailable" when replacingVlaue is bool v:
-                _database.Data[widgetNum].IsAvailable = v;
-                break;
-            case "manufactureDate" when replacingVlaue is DateTime v:
-                _database.Data[widgetNum].ManufactureDate = v;
-                break;
-            default:
-                throw new ArgumentException("Cannot change the given field by this replacing value", nameof(replacingVlaue));
+            if (_database == null)
+            {
+                throw new NullReferenceException();
+            }
+            List<(string, string)> res = new(_database.Count);
+            _database.Data.ForEach(widget => res.Add((widget.Id, widget.Name)));
+            return res;
         }
     }
 
-    public void ChangeSpecificationField(int widgetNum, int specificationNum, string fieldName, object? replacingVlaue)
+    public List<string> GetSpecificationsByWidgetNum(int widgetNum)
     {
-        if (replacingVlaue == null)
-        {
-            throw new ArgumentNullException(nameof(replacingVlaue));
-        }
-
         if (_database == null)
         {
-            throw new ArgumentNullException(nameof(_database));
+            throw new NullReferenceException("Database is null");
         }
+        List<string> res = new();
+        _database.Data[widgetNum].Specifications.ForEach(specification => res.Add(specification.Name));
+        return res;
+    }
 
-        switch (fieldName) { 
-            case "specName" when replacingVlaue is string v:
-                _database.Data[widgetNum].Specifications[specificationNum].Name = v;
-                break;
-            case "specPrice" when replacingVlaue is double:
-                throw new ArgumentException("Cannot change specification price, change widget price instead", nameof(fieldName));
-            case "isCustom" when replacingVlaue is bool v:
-                _database.Data[widgetNum].Specifications[specificationNum].IsCustom = v;
-                break;
-            default:
-                throw new ArgumentException("Cannot change the given field by this replacing value", nameof(replacingVlaue));
-        }
+    public string GetIdByWidgetNum(int widgetNum) =>
+        _database?.Data[widgetNum].Id ?? throw new NullReferenceException();
+    public string GetNameByWidgetNum(int widgetNum) =>
+        _database?.Data[widgetNum].Name ?? throw new NullReferenceException();
+    public int GetQuantityByWidgetNum(int widgetNum) =>
+        _database?.Data[widgetNum].Quantity ?? throw new NullReferenceException();
+    public double GetPriceByWidgetNum(int widgetNum) =>
+        _database?.Data[widgetNum].Price ?? throw new NullReferenceException();
+    public bool GetIsAvailableByWidgetNum(int widgetNum) =>
+        _database?.Data[widgetNum].IsAvailable ?? throw new NullReferenceException();
+    public DateTime GetManufactureDateByWidgetNum(int widgetNum) =>
+        _database?.Data[widgetNum].ManufactureDate ?? throw new NullReferenceException();
+    public int GetSpecificationsCountByWidgetNum(int widgetNum) =>
+        _database?.Data[widgetNum].Specifications.Count ?? throw new NullReferenceException();
+
+    public string GetSpecificationNameByNums(int widgetNum, int specificationNum) =>
+        _database?.Data[widgetNum].Specifications[specificationNum].Name ?? throw new NullReferenceException();
+    public double GetSpecificationPriceByNums(int widgetNum, int specificationNum) =>
+        _database?.Data[widgetNum].Specifications[specificationNum].Price ?? throw new NullReferenceException();
+    public bool GetSpecificationIsCustomByNums(int widgetNum, int specifcationNum) =>
+        _database?.Data[widgetNum].Specifications[specifcationNum].IsCustom ?? throw new NullReferenceException();
+
+    public void ChangeNameByWidgetNum(int widgetNum, string value)
+    {
+        if (_database == null) throw new NullReferenceException();
+        _database.Data[widgetNum].Name = value;
+    }
+
+    public void ChangeQuantityByWidgetNum(int widgetNum, int value)
+    {
+        if (_database == null) throw new NullReferenceException();
+        _database.Data[widgetNum].Quantity = value;
+    }
+
+    public void ChangePriceByWidgetNum(int widgetNum, double value)
+    {
+        if (_database == null) throw new NullReferenceException();
+        _database.Data[widgetNum].Price = value;
+    }
+
+    public void ChangeIsAvailaleByWidgetNum(int widgetNum, bool value)
+    {
+        if (_database == null) throw new NullReferenceException();
+        _database.Data[widgetNum].IsAvailable = value;
+    }
+
+    public void ChangeManufactureDateByWidgetNum(int widgetNum, DateTime value)
+    {
+        if (_database == null) throw new NullReferenceException();
+        _database.Data[widgetNum].ManufactureDate = value;
+    }
+
+    public void ChangeSpecificationNameByNums(int widgetNum, int specificationNum, string value)
+    {
+        if (_database == null) throw new NullReferenceException();
+        _database.Data[widgetNum].Specifications[specificationNum].Name = value;
+    }
+
+    public void ChangeSpecificationIsCustomByNums(int widgetNum, int specificationNum, bool value)
+    {
+        if (_database == null) throw new NullReferenceException();
+        _database.Data[widgetNum].Specifications[specificationNum].IsCustom = value;
     }
 }

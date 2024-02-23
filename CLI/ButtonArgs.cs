@@ -2,7 +2,7 @@
 
 internal class ButtonArgs
 {
-    private ButtonArgs() { }
+    protected ButtonArgs() { }
     public ButtonArgs(string name)
     {
         Name = name;

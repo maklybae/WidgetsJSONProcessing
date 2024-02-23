@@ -6,7 +6,7 @@
 
         private PriceChangedEventArgs() => _difference = 0;
 
-        public PriceChangedEventArgs(int difference) =>
+        public PriceChangedEventArgs(double difference) =>
             _difference = difference;
 
         public double Difference => _difference;
