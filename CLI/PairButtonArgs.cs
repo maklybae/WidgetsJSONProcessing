@@ -9,4 +9,7 @@ internal class PairButtonArgs : ButtonArgs
     }
 
     public string AdditionalInfo { get; set; } = string.Empty;
+
+    public override string ToString() =>
+        $"{AdditionalInfo} : {Name}";
 }

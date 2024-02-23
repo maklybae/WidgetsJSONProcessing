@@ -47,20 +47,10 @@ internal abstract class MenuPage
         ConsoleOutput.ClearBuffer();
         for (int i = 0; i < Buttons.Count; i++)
         {
-            string textToPrint;
-            if (Buttons[i].args is PairButtonArgs)
-            {
-                textToPrint = 
-                    $"{((PairButtonArgs)Buttons[i].args).AdditionalInfo} : {Buttons[i].args.Name}";
-            }
-            else
-            {
-                textToPrint = Buttons[i].args.Name;
-            }
             if (i == CurrentOption)
-                ConsoleOutput.PrintSelected(textToPrint);
+                ConsoleOutput.PrintSelected(Buttons[i].args.ToString());
             else
-                Console.WriteLine(textToPrint);
+                Console.WriteLine(Buttons[i].args.ToString());
         }
     }
 

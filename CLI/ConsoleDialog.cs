@@ -1,4 +1,6 @@
-﻿namespace CLI;
+﻿using Model;
+
+namespace CLI;
 
 internal class ConsoleDialog
 {
@@ -62,5 +64,41 @@ internal class ConsoleDialog
         Console.WriteLine();
         Console.Write($"Input DateTime field \"{requestedName}\" in format DD/MM/YYYY hh:mm:ss :");
         return ConsoleInput.InputDateTime();
+    }
+
+    internal static SortingOptions InputSortingOption(string field)
+    {
+        while (true)
+        {
+            ConsoleOutput.ClearBuffer();
+            Console.WriteLine($"Choosing sorting option for field: {field}");
+            Console.WriteLine("Press QWERTY 'a' to sort with the ascending option");
+            Console.WriteLine("Press QWERTY 'd' to sort with the descending option");
+            switch (Console.ReadKey(true).Key)
+            {
+                case ConsoleKey.A:
+                    return SortingOptions.Ascending;
+                case ConsoleKey.D:
+                    return SortingOptions.Descending;
+                default:
+                    ConsoleOutput.PrintIssue("Incorrect button has been pressed", "Try again", true);
+                    continue;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Takes user input to create a dictionary of sorting options for a list of fields.
+    /// </summary>
+    /// <param name="fields">List of fields for which sorting options are chosen.</param>
+    /// <returns>Dictionary containing sorting options for each field.</returns>
+    internal static Dictionary<string, SortingOptions> InputSortingOptionsDictionary(List<string> fields)
+    {
+        Dictionary<string, SortingOptions> res = new();
+        foreach (var field in fields)
+        {
+            res.Add(field, InputSortingOption(field));
+        }
+        return res;
     }
 }

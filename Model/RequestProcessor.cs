@@ -1,4 +1,6 @@
-﻿namespace Model;
+﻿using WidgetsJSON;
+
+namespace Model;
 
 public class RequestProcessor
 {
@@ -53,6 +55,14 @@ public class RequestProcessor
         }
     }
 
+    private static List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
+        List<(string specName, double specPrice, bool isCustom)> specifications)> ConvertToTuple(List<Widget> widgets)
+    {
+        return widgets.ConvertAll(
+            item => (item.Id, item.Name, item.Quantity, item.Price, item.IsAvailable ?? false, item.ManufactureDate,
+            item.Specifications.ConvertAll(spec => (spec.Name, spec.Price, spec.IsCustom ?? false))));
+    }
+
     public List<string> GetSpecificationsByWidgetNum(int widgetNum)
     {
         if (_database == null)
@@ -71,9 +81,7 @@ public class RequestProcessor
         {
             throw new NullReferenceException();
         }
-        return _database.Data.ConvertAll(
-            item => (item.Id, item.Name, item.Quantity, item.Price, item.IsAvailable ?? false, item.ManufactureDate,
-            item.Specifications.ConvertAll(spec => (spec.Name, spec.Price, spec.IsCustom ?? false))));
+        return ConvertToTuple(_database.Data);
     }
 
     public string GetIdByWidgetNum(int widgetNum) =>
@@ -141,4 +149,83 @@ public class RequestProcessor
     }
 
 
+    private IOrderedEnumerable<Widget>? PrimarySorterByAlternativeName(string alternativeName, SortingOptions sortingOption)
+    {
+        if (_database == null)
+        {
+            throw new NullReferenceException();
+        }
+        IOrderedEnumerable<Widget>? orderer = null;
+        switch (alternativeName)
+        {
+            case "widgetId":
+                orderer = sortingOption == SortingOptions.Ascending ? _database.Data.OrderBy(widget => widget.Id) : _database.Data.OrderByDescending(widget => widget.Id);
+                break;
+            case "name":
+                orderer = sortingOption == SortingOptions.Ascending ? _database.Data.OrderBy(widget => widget.Name) : _database.Data.OrderByDescending(widget => widget.Name);
+                break;
+            case "quantity":
+                orderer = sortingOption == SortingOptions.Ascending ? _database.Data.OrderBy(widget => widget.Quantity) : _database.Data.OrderByDescending(widget => widget.Quantity);
+                break;
+            case "price":
+                orderer = sortingOption == SortingOptions.Ascending ? _database.Data.OrderBy(widget => widget.Price) : _database.Data.OrderByDescending(widget => widget.Price);
+                break;
+            case "isAvailable":
+                orderer = sortingOption == SortingOptions.Ascending ? _database.Data.OrderBy(widget => widget.IsAvailable) : _database.Data.OrderByDescending(widget => widget.IsAvailable);
+                break;
+            case "manufactureDate":
+                orderer = sortingOption == SortingOptions.Ascending ? _database.Data.OrderBy(widget => widget.ManufactureDate) : _database.Data.OrderByDescending(widget => widget.ManufactureDate);
+                break;
+        }
+        return orderer;
+    }
+
+    private IOrderedEnumerable<Widget>? SecondarySorterByAlternativeName(IOrderedEnumerable<Widget>? orderer, string alternativeName, SortingOptions sortingOption)
+    {
+        switch (alternativeName)
+        {
+            case "widgetId":
+                orderer = sortingOption == SortingOptions.Ascending ? orderer?.ThenBy(widget => widget.Id) : orderer?.ThenByDescending(widget => widget.Id);
+                break;
+            case "name":
+                orderer = sortingOption == SortingOptions.Ascending ? orderer?.ThenBy(widget => widget.Name) : orderer?.ThenByDescending(widget => widget.Name);
+                break;
+            case "quantity":
+                orderer = sortingOption == SortingOptions.Ascending ? orderer?.ThenBy(widget => widget.Quantity) : orderer?.ThenByDescending(widget => widget.Quantity);
+                break;
+            case "price":
+                orderer = sortingOption == SortingOptions.Ascending ? orderer?.ThenBy(widget => widget.Price) : orderer?.ThenByDescending(widget => widget.Price);
+                break;
+            case "isAvailable":
+                orderer = sortingOption == SortingOptions.Ascending ? orderer?.ThenBy(widget => widget.IsAvailable) : orderer?.ThenByDescending(widget => widget.IsAvailable);
+                break;
+            case "manufactureDate":
+                orderer = sortingOption == SortingOptions.Ascending ? orderer?.ThenBy(widget => widget.ManufactureDate) : orderer?.ThenByDescending(widget => widget.ManufactureDate);
+                break;
+        }
+        return orderer;
+    }
+
+    // Обработать исключение
+    public List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
+        List<(string specName, double specPrice, bool isCustom)> specifications)> Sort(List<string>? keys, Dictionary<string, SortingOptions>? sortingOptions)
+    {
+        if (_database == null)
+            throw new NullReferenceException();
+        if (keys == null)
+            throw new ArgumentNullException(nameof(keys));
+        if (sortingOptions == null)
+            throw new ArgumentNullException(nameof(sortingOptions));
+        if (keys.Count < 1)
+            throw new ArgumentException("Requested prarmeters to sort should contain at least one argument", nameof(keys));
+
+        IOrderedEnumerable<Widget>? orderer = PrimarySorterByAlternativeName(keys[0], sortingOptions[keys[0]]);
+
+        for (int i = 1; i < keys.Count; i++)
+        {
+            orderer = SecondarySorterByAlternativeName(orderer, keys[i], sortingOptions[keys[i]]);
+        }
+
+        return ConvertToTuple(orderer?.ToList() ?? _database.Data);
+    }
 }
