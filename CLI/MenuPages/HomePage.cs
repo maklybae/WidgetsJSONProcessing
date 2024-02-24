@@ -10,10 +10,10 @@ internal class HomePage : MenuPage
     /// <summary>
     /// Initializes a new instance of the <see cref="HomePage"/> class and sets up the initial options.
     /// </summary>
-    internal HomePage() =>
+    public HomePage() =>
         UpdateButtons();
 
-    internal override void UpdateButtons()
+    public override void UpdateButtons()
     {
         Buttons = new()
         {

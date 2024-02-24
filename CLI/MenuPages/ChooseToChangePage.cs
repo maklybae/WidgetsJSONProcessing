@@ -5,13 +5,13 @@ internal class ChooseToChangePage : MenuPage
 {
     private readonly DataTypeToChoose _option;
 
-    internal ChooseToChangePage(DataTypeToChoose option)
+    public ChooseToChangePage(DataTypeToChoose option)
     {
         _option = option;
         UpdateButtons();
     }
 
-    internal override void UpdateButtons()
+    public override void UpdateButtons()
     {
         if (_option == DataTypeToChoose.ChooseWidget)
         {

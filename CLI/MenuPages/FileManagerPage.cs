@@ -15,12 +15,12 @@ internal class FileManagerPage : MenuPage
     /// <summary>
     /// Initializes a new instance of the <see cref="FileManagerPage"/> class and updates the option list.
     /// </summary>
-    internal FileManagerPage() => UpdateButtons();
+    public FileManagerPage() => UpdateButtons();
 
     /// <summary>
     /// Updates the option list based on the current directory's content.
     /// </summary>
-    internal override void UpdateButtons()
+    public override void UpdateButtons()
     {
         Buttons.Clear();
 

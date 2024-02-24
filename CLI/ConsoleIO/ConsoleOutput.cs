@@ -26,7 +26,7 @@ internal static class ConsoleOutput
     /// Prints ASCII art or a basic title for success, depending on the console window width.
     /// </summary>
     /// <param name="isStopped">Indicates whether to wait for a key press if true.</param>
-    internal static void PrintSuccess(bool isStopped = false)
+    public static void PrintSuccess(bool isStopped = false)
     {
         Console.ForegroundColor = ConsoleColor.Green;
 
@@ -46,21 +46,21 @@ internal static class ConsoleOutput
             Console.ReadKey(true);
     }
 
-    internal static void ClearBuffer()
+    public static void ClearBuffer()
     {
         Console.Clear();
         Console.WriteLine("\x1b[3J");
         Console.Clear();
     }
 
-    internal static void PrintUntilKeyPressed(string data)
+    public static void PrintUntilKeyPressed(string data)
     {
         ClearBuffer();
         Console.WriteLine(data);
         Console.ReadKey(true);
     }
 
-    internal static void PrintSelected(string text)
+    public static void PrintSelected(string text)
     {
         Console.BackgroundColor = ConsoleColor.White;
         Console.ForegroundColor = ConsoleColor.Black;
@@ -69,7 +69,7 @@ internal static class ConsoleOutput
         Console.WriteLine();
     }
 
-    internal static void PrintIssue(string issue, string fixRecommendation, bool isStopped = false)
+    public static void PrintIssue(string issue, string fixRecommendation, bool isStopped = false)
     {
         ClearBuffer();
         Console.ForegroundColor = ConsoleColor.Red;

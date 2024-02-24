@@ -4,12 +4,12 @@ using CLI.ConsoleIO;
 
 internal class ChangeSpecificationPage : MenuPage
 {
-    internal ChangeSpecificationPage()
+    public ChangeSpecificationPage()
     {
         UpdateButtons();
     }
 
-    internal override void UpdateButtons()
+    public override void UpdateButtons()
     {
         (int currentWidgetNum, int currentSpecificationNum) =
             (Controller.Selector.WidgetNum, Controller.Selector.SpecificationNum);

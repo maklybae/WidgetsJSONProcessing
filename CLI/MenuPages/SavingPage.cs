@@ -21,7 +21,7 @@ namespace CLI.MenuPages
             SaveCurrent
         }
 
-        internal override void UpdateButtons()
+        public override void UpdateButtons()
         {
             Buttons.Add((SaveToDesktop, new ButtonArgs("Save to the desktop directory")));
             Buttons.Add((SaveToCurrentDirectory, new ButtonArgs($"Save to the current directory: {Environment.CurrentDirectory}")));
@@ -94,6 +94,5 @@ namespace CLI.MenuPages
         }
 
         private void MoveToPreviousPage() => Controller.PopMenuPageFromStack();
-
     }
 }

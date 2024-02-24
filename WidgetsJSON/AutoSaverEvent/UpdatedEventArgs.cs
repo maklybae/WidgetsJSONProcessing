@@ -1,15 +1,14 @@
-﻿namespace WidgetsJSON.AutoSaverEvent
+﻿namespace WidgetsJSON.AutoSaverEvent;
+
+public class UpdatedEventArgs : EventArgs
 {
-    public class UpdatedEventArgs : EventArgs
-    {
-        private readonly DateTime _happened;
+    private readonly DateTime _happened;
 
-        public UpdatedEventArgs() =>
-            _happened = DateTime.Now;
+    public UpdatedEventArgs() =>
+        _happened = DateTime.Now;
 
-        public UpdatedEventArgs(DateTime happened) =>
-            _happened = happened;
+    public UpdatedEventArgs(DateTime happened) =>
+        _happened = happened;
 
-        public DateTime Happened => _happened;
-    }
+    public DateTime Happened => _happened;
 }

@@ -2,7 +2,7 @@
 
 internal static class DataConverter
 {
-    internal static string[][] ConvertToJaggedArray(
+    public static string[][] ConvertToJaggedArray(
         List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
         List<(string specName, double specPrice, bool isCustom)> specifications)> items)
     {

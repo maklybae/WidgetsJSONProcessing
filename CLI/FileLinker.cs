@@ -4,7 +4,7 @@ namespace CLI
 {
     internal static class FileLinker
     {
-        internal static void LinkFile(string path)
+        public static void LinkFile(string path)
         {
             try
             {

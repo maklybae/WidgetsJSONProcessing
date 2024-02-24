@@ -5,7 +5,7 @@ using WidgetsJSON.PriceChangedEvent;
 
 namespace Model;
 
-public class Database
+internal class Database
 {
     public const int FieldsCount = 7;
     private static readonly string[] s_jsonFieldsNames = new string[]

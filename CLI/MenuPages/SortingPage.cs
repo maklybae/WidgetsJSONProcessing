@@ -7,11 +7,11 @@ namespace CLI.MenuPages
     {
         private readonly List<string> _selectedFields = new();
 
-        internal SortingPage()
+        public SortingPage()
         {
             UpdateButtons();
         }
-        internal override void UpdateButtons()
+        public override void UpdateButtons()
         {
             Buttons.Clear();
 

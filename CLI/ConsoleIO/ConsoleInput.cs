@@ -2,7 +2,7 @@
 
 internal class ConsoleInput
 {
-    internal static string InputStringWithCursor()
+    public static string InputStringWithCursor()
     {
         Console.CursorVisible = true;
         string input = Console.ReadLine() ?? "";
@@ -10,21 +10,21 @@ internal class ConsoleInput
         return input;
     }
 
-    internal static string InputFullPath()
+    public static string InputFullPath()
     {
         ConsoleOutput.ClearBuffer();
         Console.Write("Write a full path to file with the .json extension: ");
         return InputStringWithCursor();
     }
 
-    internal static string InputFilename()
+    public static string InputFilename()
     {
         ConsoleOutput.ClearBuffer();
         Console.Write("Write a name of the JSON file with the extension: ");
         return InputStringWithCursor();
     }
 
-    internal static int InputIntegerInRange(int lowerBound, int upperBound)
+    public static int InputIntegerInRange(int lowerBound, int upperBound)
     {
         var input = InputStringWithCursor();
 
@@ -39,7 +39,7 @@ internal class ConsoleInput
         }
     }
 
-    internal static double InputDoubleInRange(int lowerBound, int upperBound)
+    public static double InputDoubleInRange(int lowerBound, int upperBound)
     {
         var input = InputStringWithCursor();
 
@@ -54,7 +54,7 @@ internal class ConsoleInput
         }
     }
 
-    internal static DateTime InputDateTime()
+    public static DateTime InputDateTime()
     {
         var input = InputStringWithCursor();
 

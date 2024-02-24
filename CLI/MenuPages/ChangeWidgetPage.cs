@@ -5,12 +5,12 @@ namespace CLI.MenuPages;
 
 internal class ChangeWidgetPage : MenuPage
 {
-    internal ChangeWidgetPage()
+    public ChangeWidgetPage()
     {
         UpdateButtons();
     }
 
-    internal override void UpdateButtons()
+    public override void UpdateButtons()
     {
         int currentWidgetNum = Controller.Selector.WidgetNum;
         Buttons = new()

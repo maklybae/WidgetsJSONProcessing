@@ -53,7 +53,7 @@ internal static class TablePrinter
     /// <param name="tableData">Pair of headings and data for the table.</param>
     /// <param name="option">Printing options for the table.</param>
     /// <param name="count">Number of rows to print for partial printing options.</param>
-    internal static void ShowTableView((string[] headings, string[][] data) tableData)
+    public static void ShowTableView((string[] headings, string[][] data) tableData)
     {
         // Estimate
         int currentFirstColumn = 0;

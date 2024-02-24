@@ -22,34 +22,13 @@ internal static class Controller
         MenuPagesStack.Push(new SettingUpPage());
     }
 
-    internal static RequestProcessor Request => _request;
-    internal static WidgetSpecificationSelector Selector => _selector;
-
-    internal static void AddWidgetNumToSelector(int widgetNum) =>
-        _selector.WidgetNum = widgetNum;
-
-    internal static void AddSpecificationNumToSelector(int specificationNum) =>
-        _selector.SpecificationNum = specificationNum;
-
-    internal static void ClearSelector() => _selector = new();
-
-    /// <summary>
-    /// Method to add a new menu page to the stack.
-    /// </summary>
-    /// <param name="toAdd">Menu page to add to the stack.</param>
-    internal static void AddMenuPageToStack(MenuPage toAdd) => MenuPagesStack.Push(toAdd);
-
-    /// <summary>
-    /// Method to remove the top menu page from the stack.
-    /// </summary>
-    internal static void PopMenuPageFromStack() => MenuPagesStack.Pop();
-
-    internal static MenuPage PeekMenuPageFromStack() => MenuPagesStack.Peek();
+    public static RequestProcessor Request => _request;
+    public static WidgetSpecificationSelector Selector => _selector;
 
     /// <summary>
     /// Method to clear all data usage properties.
     /// </summary>
-    internal static void ClearAll()
+    private static void ClearAll()
     {
         MenuPagesStack.Clear();
         MenuPagesStack.Push(new HomePage());
@@ -57,10 +36,31 @@ internal static class Controller
         _request = new();
     }
 
+    public static void AddWidgetNumToSelector(int widgetNum) =>
+        _selector.WidgetNum = widgetNum;
+
+    public static void AddSpecificationNumToSelector(int specificationNum) =>
+        _selector.SpecificationNum = specificationNum;
+
+    public static void ClearSelector() => _selector = new();
+
+    /// <summary>
+    /// Method to add a new menu page to the stack.
+    /// </summary>
+    /// <param name="toAdd">Menu page to add to the stack.</param>
+    public static void AddMenuPageToStack(MenuPage toAdd) => MenuPagesStack.Push(toAdd);
+
+    /// <summary>
+    /// Method to remove the top menu page from the stack.
+    /// </summary>
+    public static void PopMenuPageFromStack() => MenuPagesStack.Pop();
+
+    public static MenuPage PeekMenuPageFromStack() => MenuPagesStack.Peek();
+
     /// <summary>
     /// Method to display the menu and handle user interaction.
     /// </summary>
-    internal static void ShowMenu()
+    public static void ShowMenu()
     {
         // Hide the cursor for a cleaner interface.
         Console.CursorVisible = false;

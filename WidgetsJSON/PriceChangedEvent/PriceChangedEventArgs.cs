@@ -1,14 +1,13 @@
-﻿namespace WidgetsJSON.PriceChangedEvent
+﻿namespace WidgetsJSON.PriceChangedEvent;
+
+public class PriceChangedEventArgs : EventArgs
 {
-    public class PriceChangedEventArgs : EventArgs
-    {
-        private readonly double _difference;
+    private readonly double _difference;
 
-        private PriceChangedEventArgs() => _difference = 0;
+    private PriceChangedEventArgs() => _difference = 0;
 
-        public PriceChangedEventArgs(double difference) =>
-            _difference = difference;
+    public PriceChangedEventArgs(double difference) =>
+        _difference = difference;
 
-        public double Difference => _difference;
-    }
+    public double Difference => _difference;
 }

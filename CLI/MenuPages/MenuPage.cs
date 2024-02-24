@@ -22,7 +22,7 @@ internal abstract class MenuPage
     /// <summary>
     /// Gets or sets the index of the currently selected option, handling circular navigation.
     /// </summary>  
-    internal int CurrentOption
+    public int CurrentOption
     {
         get { return _currentOption; }
         set
@@ -35,17 +35,17 @@ internal abstract class MenuPage
     /// <summary>
     /// Initializes a new instance of the <see cref="MenuPage"/> class with an empty list of options.
     /// </summary>
-    protected MenuPage()
+    public MenuPage()
     {
         _buttons = new();
     }
 
-    internal abstract void UpdateButtons();
+    public abstract void UpdateButtons();
 
     /// <summary>
     /// Draws the menu page on the console, highlighting the currently selected option.
     /// </summary>
-    internal virtual void DrawPage()
+    public virtual void DrawPage()
     {
         ConsoleOutput.ClearBuffer();
         for (int i = 0; i < Buttons.Count; i++)
@@ -60,7 +60,7 @@ internal abstract class MenuPage
     /// <summary>
     /// Executes the action associated with the currently selected option.
     /// </summary>
-    internal void ExecuteCurrentOption()
+    public void ExecuteCurrentOption()
     {
         Buttons[CurrentOption].buttonAction?.Invoke();
     }
