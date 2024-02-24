@@ -1,4 +1,4 @@
-# WidgetsJSONProcessing (КДЗ_3_2 - Вариант 4)
+# WidgetsJSONProcessing (КДЗ_3_2 | Вариант 4)
 
 ## Преамбула
 
