@@ -101,4 +101,24 @@ internal class ConsoleDialog
         }
         return res;
     }
+
+    internal static bool InputOverwriteFile()
+    {
+        while (true)
+        {
+            ConsoleOutput.ClearBuffer();
+            Console.WriteLine("Press QWERTY 'y' to overwrite existing file");
+            Console.WriteLine("Press QWERTY 'n' otherwise");
+            switch (Console.ReadKey(true).Key)
+            {
+                case ConsoleKey.Y:
+                    return true;
+                case ConsoleKey.N:
+                    return false;
+                default:
+                    ConsoleOutput.PrintIssue("Incorrect button has been pressed", "Try again", true);
+                    continue;
+            }
+        }
+    }
 }

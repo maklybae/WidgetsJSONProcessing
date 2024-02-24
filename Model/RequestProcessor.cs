@@ -55,6 +55,9 @@ public class RequestProcessor
         }
     }
 
+    public string OriginalFilePath =>
+           _database?.OriginFilePath ?? throw new NullReferenceException();
+
     private static List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
         List<(string specName, double specPrice, bool isCustom)> specifications)> ConvertToTuple(List<Widget> widgets)
     {
@@ -206,7 +209,6 @@ public class RequestProcessor
         return orderer;
     }
 
-    // Обработать исключение
     public List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
         List<(string specName, double specPrice, bool isCustom)> specifications)> Sort(List<string>? keys, Dictionary<string, SortingOptions>? sortingOptions)
     {
@@ -226,6 +228,35 @@ public class RequestProcessor
             orderer = SecondarySorterByAlternativeName(orderer, keys[i], sortingOptions[keys[i]]);
         }
 
+        _database.AddDataToCache(orderer?.ToList() ?? _database.Data);
         return ConvertToTuple(orderer?.ToList() ?? _database.Data);
+    }
+
+    public void Save(string filePath)
+    {
+        if (_database == null)
+            throw new NullReferenceException();
+        _database.Save(filePath);
+    }
+
+    public void SaveCache(string filePath)
+    {
+        if (_database == null)
+            throw new NullReferenceException();
+        _database.SaveCache(filePath);
+    }
+
+    public string GetJsonStringCache()
+    {
+        if (_database == null)
+            throw new NullReferenceException();
+        return _database.GetJsonStringCache();
+    }
+
+    public string GetJsonStringData()
+    {
+        if (_database == null)
+            throw new NullReferenceException();
+        return _database.GetJsonStringData();
     }
 }

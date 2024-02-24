@@ -1,6 +1,7 @@
-﻿using System.Security;
+﻿using CLI.ButtonArgsClasses;
+using System.Security;
 
-namespace CLI;
+namespace CLI.MenuPages;
 
 /// <summary>
 /// Represents a file manager menu that allows navigation through directories and opening JSON files.
@@ -116,7 +117,7 @@ internal class FileManagerPage : MenuPage
     {
         FileLinker.LinkFile(Buttons[CurrentOption].args.Name);
         Controller.PopMenuPageFromStack();
-    }   
+    }
 
     /// <summary>
     /// Moves to the previous menu by popping the current menu page from the stack.

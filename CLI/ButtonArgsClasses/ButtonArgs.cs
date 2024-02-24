@@ -1,4 +1,4 @@
-﻿namespace CLI;
+﻿namespace CLI.ButtonArgsClasses;
 
 internal class ButtonArgs
 {

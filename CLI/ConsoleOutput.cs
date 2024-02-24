@@ -53,6 +53,13 @@ internal static class ConsoleOutput
         Console.Clear();
     }
 
+    internal static void PrintUntilKeyPressed(string data)
+    {
+        ClearBuffer();
+        Console.WriteLine(data);
+        Console.ReadKey(true);
+    }
+
     internal static void PrintSelected(string text)
     {
         Console.BackgroundColor = ConsoleColor.White;

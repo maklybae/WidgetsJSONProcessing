@@ -5,11 +5,6 @@ namespace Model;
 public class Database
 {
     public const int FieldsCount = 7;
-
-    private readonly List<Widget> _data;
-    private readonly string _originFilePath;
-    private readonly AutoSaver? _autoSaver;
-    private readonly PriceRedistributor? _priceRedistributor;
     private static readonly string[] s_jsonFieldsNames = new string[]
     {
         "widgetId",
@@ -20,7 +15,16 @@ public class Database
         "manufactureDate",
         "specifications"
     };
-   
+
+    private readonly List<Widget> _data;
+    private readonly string _originFilePath;
+    private readonly AutoSaver? _autoSaver;
+    private readonly PriceRedistributor? _priceRedistributor;
+    private readonly JsonSerializerOptions _serializerOptions = new() { WriteIndented = true };
+
+    private List<Widget>? _cacheData;
+    // jsonString = JsonSerializer.Serialize(widgets, options);
+
     public Database()
     {
         _data = new();
@@ -63,7 +67,23 @@ public class Database
         }
     }
 
+    public void AddDataToCache(List<Widget> data)
+    {
+        _cacheData = data;
+    }
+
     public void Save() { }
 
-    public void Save(string filePath) { }
+    public void Save(string filePath) =>
+        File.WriteAllText(filePath, GetJsonStringData());
+
+    public void SaveCache(string filePath) =>
+        File.WriteAllText(filePath, GetJsonStringCache());
+
+    public string GetJsonStringData() =>
+        JsonSerializer.Serialize(Data, _serializerOptions);
+
+    public string GetJsonStringCache() =>
+        JsonSerializer.Serialize(_cacheData, _serializerOptions);
+
 }

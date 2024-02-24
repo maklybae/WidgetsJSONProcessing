@@ -17,6 +17,13 @@ internal class ConsoleInput
         return InputStringWithCursor();
     }
 
+    internal static string InputFilename()
+    {
+        ConsoleOutput.ClearBuffer();
+        Console.Write("Write a name of the JSON file with the extension: ");
+        return InputStringWithCursor();
+    }
+
     internal static int InputIntegerInRange(int lowerBound, int upperBound)
     {
         var input = InputStringWithCursor();

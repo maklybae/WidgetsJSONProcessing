@@ -1,6 +1,6 @@
-﻿using System.Xml.Linq;
+﻿using CLI.ButtonArgsClasses;
 
-namespace CLI
+namespace CLI.MenuPages
 {
     internal class SortingPage : MenuPage
     {
@@ -36,9 +36,20 @@ namespace CLI
 
         private void RunSortingBySelectedFields()
         {
-            var sortingOptions = ConsoleDialog.InputSortingOptionsDictionary(_selectedFields);
-            var sortedCourses = Controller.Request.Sort(_selectedFields, sortingOptions);
-            TablePrinter.ShowTableView((Controller.Request.AltenativeFieldsNames, DataConverter.ConvertToJaggedArray(sortedCourses)));
+            List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
+                List<(string specName, double specPrice, bool isCustom)> specifications)> sorted;
+            try
+            {
+                var sortingOptions = ConsoleDialog.InputSortingOptionsDictionary(_selectedFields);
+                sorted = Controller.Request.Sort(_selectedFields, sortingOptions);
+            }
+            catch (ArgumentException e)
+            {
+                ConsoleOutput.PrintIssue(e.Message, string.Empty, true);
+                return;
+            }
+            TablePrinter.ShowTableView((Controller.Request.AltenativeFieldsNames, DataConverter.ConvertToJaggedArray(sorted)));
+            Controller.AddMenuPageToStack(new SavingPage(SavingPage.SavingType.SaveCache));
         }
 
         private void MoveToPreviousPage() => Controller.PopMenuPageFromStack();

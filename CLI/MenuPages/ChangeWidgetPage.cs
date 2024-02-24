@@ -1,6 +1,6 @@
-﻿using System.Security.Principal;
+﻿using CLI.ButtonArgsClasses;
 
-namespace CLI;
+namespace CLI.MenuPages;
 
 internal class ChangeWidgetPage : MenuPage
 {

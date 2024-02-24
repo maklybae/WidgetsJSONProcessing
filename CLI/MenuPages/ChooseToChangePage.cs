@@ -1,4 +1,5 @@
-﻿namespace CLI;
+﻿namespace CLI.MenuPages;
+using CLI.ButtonArgsClasses;
 
 internal class ChooseToChangePage : MenuPage
 {
@@ -12,14 +13,14 @@ internal class ChooseToChangePage : MenuPage
 
     internal override void UpdateButtons()
     {
-        if (_option == DataTypeToChoose.ChooseWidget) 
+        if (_option == DataTypeToChoose.ChooseWidget)
         {
             foreach (var pair in Controller.Request.WidgetsIdNamesPairs)
             {
                 Buttons.Add((Choose, new PairButtonArgs(pair.id, pair.name)));
             }
         }
-        else if(_option == DataTypeToChoose.ChooseSpecification)
+        else if (_option == DataTypeToChoose.ChooseSpecification)
         {
             foreach (var specName in Controller.Request.GetSpecificationsByWidgetNum(
                 Controller.Selector.WidgetNum))

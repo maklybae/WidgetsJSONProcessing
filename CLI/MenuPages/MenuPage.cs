@@ -1,4 +1,6 @@
-﻿namespace CLI;
+﻿using CLI.ButtonArgsClasses;
+
+namespace CLI.MenuPages;
 
 internal abstract class MenuPage
 {

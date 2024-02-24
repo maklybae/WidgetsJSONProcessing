@@ -1,6 +1,6 @@
-﻿using System.Net.Http.Headers;
+﻿using CLI.ButtonArgsClasses;
 
-namespace CLI;
+namespace CLI.MenuPages;
 /// <summary>
 /// Represents the home page menu with various options for data manipulation and program settings.
 /// </summary>
@@ -20,6 +20,7 @@ internal class HomePage : MenuPage
             (ShowCurrentTableData, new ButtonArgs("Show data in table-view")),
             //(MoveToSelectionMenu, new ButtonArgs("Selecting")),
             (MoveToSortingMenu, new ButtonArgs("Sorting")),
+            (MoveToSavingMenu, new ButtonArgs("Saving")),
             (MoveToSettinUpMenu, new ButtonArgs("Set up configuration")),
             //(MoveToHelp, new ButtonArgs("Help")),
             (Exit, new ButtonArgs("Exit"))
@@ -50,6 +51,8 @@ internal class HomePage : MenuPage
     /// Moves to the sorting menu by adding it to the menu stack.
     /// </summary>
     private void MoveToSortingMenu() => Controller.AddMenuPageToStack(new SortingPage());
+
+    private void MoveToSavingMenu() => Controller.AddMenuPageToStack(new SavingPage(SavingPage.SavingType.SaveCurrent));
 
     /// <summary>
     /// Moves to the configuration setup menu by adding it to the menu stack.

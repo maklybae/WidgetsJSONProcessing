@@ -1,4 +1,5 @@
-﻿namespace CLI;
+﻿namespace CLI.MenuPages;
+using ButtonArgsClasses;
 
 internal class ChangeSpecificationPage : MenuPage
 {
@@ -11,7 +12,7 @@ internal class ChangeSpecificationPage : MenuPage
     {
         (int currentWidgetNum, int currentSpecificationNum) =
             (Controller.Selector.WidgetNum, Controller.Selector.SpecificationNum);
-        
+
         Buttons = new()
         {
             (ChangeName, new PairButtonArgs("Name", Controller.Request.GetSpecificationNameByNums(currentWidgetNum, currentSpecificationNum))),
