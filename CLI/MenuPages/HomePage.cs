@@ -19,11 +19,10 @@ internal class HomePage : MenuPage
         {
             (MoveToChangeDataMenu, new ButtonArgs("Change Data")),
             (ShowCurrentTableData, new ButtonArgs("Show data in table-view")),
-            //(MoveToSelectionMenu, new ButtonArgs("Selecting")),
             (MoveToSortingMenu, new ButtonArgs("Sorting")),
             (MoveToSavingMenu, new ButtonArgs("Saving")),
             (MoveToSettinUpMenu, new ButtonArgs("Set up configuration")),
-            //(MoveToHelp, new ButtonArgs("Help")),
+            (MoveToHelp, new ButtonArgs("Help")),
             (Exit, new ButtonArgs("Exit"))
         };
     }
@@ -43,11 +42,6 @@ internal class HomePage : MenuPage
         TablePrinter.ShowTableView((Controller.Request.AltenativeFieldsNames, DataConverter.ConvertToJaggedArray(Controller.Request.GetAllItems())));
     }
 
-    ///// <summary>
-    ///// Moves to the selection menu by adding it to the menu stack.
-    ///// </summary>
-    //private void MoveToSelectionMenu() => Contorller.AddMenuPageToStack(new SelectionPage());
-
     /// <summary>
     /// Moves to the sorting menu by adding it to the menu stack.
     /// </summary>
@@ -60,10 +54,10 @@ internal class HomePage : MenuPage
     /// </summary>
     private void MoveToSettinUpMenu() => Controller.AddMenuPageToStack(new SettingUpPage());
 
-    ///// <summary>
-    ///// Prints the help page to the console.
-    ///// </summary>
-    //private void MoveToHelp() => ConsoleDialog.PrintHelpPage();
+    /// <summary>
+    /// Prints the help page to the console.
+    /// </summary>
+    private void MoveToHelp() => ConsoleOutput.PrintHelpPage();
 
     /// <summary>
     /// Exits the program by terminating the environment.

@@ -1,7 +1,21 @@
-﻿namespace CLI.ConsoleIO;
+﻿using Microsoft.VisualBasic;
+
+namespace CLI.ConsoleIO;
 
 internal static class ConsoleOutput
 {
+    private const string HelpText = @"This program was created by Maksim Klychkov as a solution to homework 2, module 3, variant 4.
+Nota Bene: The program supports only formatted file as in the sample *.JSON file.
+The program is controlled using the up/down arrows and enter button (left/right arrows are also useful for switching between pages in table-view)
+
+Firstly, you need to enter JSON data from console via absolute path or with file manager (which shows system drives, folders in current folder and *.JSON files).
+Then, you will be able to:
+- print data in table-view
+- sort data by several fields at the same time
+- change field of objects
+- choose new file to process";
+    private const string Author = "© Klychkov Maksim, 2311";
+
     // ASCII art titles for success and welcome
     private static readonly string s_asciiSuccess = $"{Environment.NewLine}   " +
         $".-'''-.   ___    _     _______       _______      .-''-.     .-'''-" +
@@ -21,6 +35,25 @@ internal static class ConsoleOutput
         $".'    `'-..-'    `-...-'    `-...-'   {Environment.NewLine}        " +
         $"                                                                   " +
         $"         {Environment.NewLine}";
+
+    // Fun title Welcome.
+    private static readonly string s_asciiWelcome = $".--.      .--.    .-''-.  " +
+        $"  .---.        _______      ,-----.    ,---.    ,---.    .-''-.   " +
+        $"{Environment.NewLine}|  |_     |  |  .'_ _   \\   | ,_|       /   __ " +
+        $" \\   .'  .-,  '.  |    \\  /    |  .'_ _   \\  {Environment.NewLine}|" +
+        $" _( )_   |  | / ( ` )   ',-./  )      | ,_/  \\__) / ,-.|  \\ _ \\ | " +
+        $" ,  \\/  ,  | / ( ` )   ' {Environment.NewLine}|(_ o _)  |  |. (_ o _" +
+        $")  |\\  '_ '`)  ,-./  )      ;  \\  '_ /  | :|  |\\_   /|  |. (_ o _)" +
+        $"  | {Environment.NewLine}| (_,_) \\ |  ||  (_,_)___| > (_)  )  \\  '_ " +
+        $"'`)    |  _`,/ \\ _/  ||  _( )_/ |  ||  (_,_)___| {Environment.NewLine}" +
+        $"|  |/    \\|  |'  \\   .---.(  .  .-'   > (_)  )  __: (  '\\_/ \\   ;| " +
+        $"(_ o _) |  |'  \\   .---. {Environment.NewLine}|  '  /\\  `  | \\  `-' " +
+        $"   / `-'`-'|___(  .  .-'_/  )\\ `\"/  \\  ) / |  (_,_)  |  | \\  `-'   " +
+        $" / {Environment.NewLine}|    /  \\    |  \\       /   |        \\`-'`-' " +
+        $"    /  '. \\_/``\".'  |  |      |  |  \\       /  {Environment.NewLine}`-" +
+        $"--'    `---`   `'-..-'    `--------`  `._____.'     '-----'    '--'      " +
+        $"'--'   `'-..-'   {Environment.NewLine}                                   " +
+        $"                                                         ";
 
     /// <summary>
     /// Prints ASCII art or a basic title for success, depending on the console window width.
@@ -44,6 +77,24 @@ internal static class ConsoleOutput
         // Wait for user input if specified
         if (isStopped)
             Console.ReadKey(true);
+    }
+
+    /// <summary>
+    /// Prints an ASCII art or a basic title for welcome, depending on the console window width.
+    /// </summary>
+    internal static void PrintWelcome()
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        // Limit width to fit to console.
+        if (Console.WindowWidth < 95)
+        {
+            Console.WriteLine("Welcome!");
+        }
+        else
+        {
+            Console.WriteLine(s_asciiWelcome);
+        }
+        Console.ForegroundColor = ConsoleColor.White;
     }
 
     public static void ClearBuffer()
@@ -82,5 +133,17 @@ internal static class ConsoleOutput
         Console.ForegroundColor = ConsoleColor.White;
         if (isStopped)
             Console.ReadKey(true);
+    }
+
+    internal static void PrintHelpPage()
+    {
+        ClearBuffer();
+        PrintWelcome();
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine(HelpText);
+        Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}{Author}");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine($"{Environment.NewLine}Press any button...");
+        Console.ReadKey(true);
     }
 }

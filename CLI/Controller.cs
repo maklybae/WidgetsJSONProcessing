@@ -66,7 +66,7 @@ internal static class Controller
         Console.CursorVisible = false;
 
         // Print the initial help page with instructions.
-        //ConsoleDialog.PrintHelpPage();
+        ConsoleOutput.PrintHelpPage();
 
         // Continue showing the menu until the application exits.
         while (true)
