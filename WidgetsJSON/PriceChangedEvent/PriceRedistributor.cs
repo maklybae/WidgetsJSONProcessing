@@ -1,6 +1,6 @@
 ﻿using AdvancedTools;
 
-namespace WidgetsJSON
+namespace WidgetsJSON.PriceChangedEvent
 {
     public class PriceRedistributor
     {

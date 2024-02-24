@@ -1,4 +1,4 @@
-﻿namespace WidgetsJSON
+﻿namespace WidgetsJSON.AutoSaverEvent
 {
     public class AutoSaver
     {
@@ -13,7 +13,7 @@
         public AutoSaver(string originalPath, Action<string> saveAction)
         {
             _saveAction = saveAction;
-            FileInfo jsonFile = new FileInfo(originalPath);
+            FileInfo jsonFile = new(originalPath);
             _pathToAutoSave = Path.Combine(
                 jsonFile.DirectoryName ?? string.Empty, $"{Path.GetFileNameWithoutExtension(jsonFile.Name)}_tmp.json");
         }

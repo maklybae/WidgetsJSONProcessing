@@ -1,10 +1,11 @@
 ﻿using CLI.ButtonArgsClasses;
+using CLI.ConsoleIO;
 
 namespace CLI.MenuPages
 {
     internal class SortingPage : MenuPage
     {
-        private List<string> _selectedFields = new();
+        private readonly List<string> _selectedFields = new();
 
         internal SortingPage()
         {

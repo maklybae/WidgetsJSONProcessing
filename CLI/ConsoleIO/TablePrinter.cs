@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System.Net.NetworkInformation;
 
-namespace CLI;
+namespace CLI.ConsoleIO;
 
 internal static class TablePrinter
 {

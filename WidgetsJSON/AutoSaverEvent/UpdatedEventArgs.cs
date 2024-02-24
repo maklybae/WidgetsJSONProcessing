@@ -1,4 +1,4 @@
-﻿namespace WidgetsJSON
+﻿namespace WidgetsJSON.AutoSaverEvent
 {
     public class UpdatedEventArgs : EventArgs
     {

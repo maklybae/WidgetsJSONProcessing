@@ -183,7 +183,7 @@ public class RequestProcessor
         return orderer;
     }
 
-    private IOrderedEnumerable<Widget>? SecondarySorterByAlternativeName(IOrderedEnumerable<Widget>? orderer, string alternativeName, SortingOptions sortingOption)
+    private static IOrderedEnumerable<Widget>? SecondarySorterByAlternativeName(IOrderedEnumerable<Widget>? orderer, string alternativeName, SortingOptions sortingOption)
     {
         switch (alternativeName)
         {

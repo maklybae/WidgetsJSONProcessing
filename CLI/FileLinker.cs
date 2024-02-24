@@ -1,4 +1,6 @@
-﻿namespace CLI
+﻿using CLI.ConsoleIO;
+
+namespace CLI
 {
     internal static class FileLinker
     {

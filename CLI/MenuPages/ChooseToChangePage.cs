@@ -3,7 +3,7 @@ using CLI.ButtonArgsClasses;
 
 internal class ChooseToChangePage : MenuPage
 {
-    private DataTypeToChoose _option;
+    private readonly DataTypeToChoose _option;
 
     internal ChooseToChangePage(DataTypeToChoose option)
     {
@@ -15,9 +15,9 @@ internal class ChooseToChangePage : MenuPage
     {
         if (_option == DataTypeToChoose.ChooseWidget)
         {
-            foreach (var pair in Controller.Request.WidgetsIdNamesPairs)
+            foreach (var (id, name) in Controller.Request.WidgetsIdNamesPairs)
             {
-                Buttons.Add((Choose, new PairButtonArgs(pair.id, pair.name)));
+                Buttons.Add((Choose, new PairButtonArgs(id, name)));
             }
         }
         else if (_option == DataTypeToChoose.ChooseSpecification)

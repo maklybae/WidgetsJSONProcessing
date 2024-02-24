@@ -1,5 +1,8 @@
 ﻿using System.Text.Json;
 using WidgetsJSON;
+using WidgetsJSON.AutoSaverEvent;
+using WidgetsJSON.PriceChangedEvent;
+
 namespace Model;
 
 public class Database

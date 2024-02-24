@@ -1,4 +1,4 @@
-﻿namespace WidgetsJSON
+﻿namespace WidgetsJSON.PriceChangedEvent
 {
     public class PriceChangedEventArgs : EventArgs
     {

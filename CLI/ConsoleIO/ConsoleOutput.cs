@@ -1,4 +1,4 @@
-﻿namespace CLI;
+﻿namespace CLI.ConsoleIO;
 
 internal static class ConsoleOutput
 {

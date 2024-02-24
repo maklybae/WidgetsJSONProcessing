@@ -1,6 +1,6 @@
 ﻿using Model;
 
-namespace CLI;
+namespace CLI.ConsoleIO;
 
 internal class ConsoleDialog
 {

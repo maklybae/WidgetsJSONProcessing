@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using WidgetsJSON.AutoSaverEvent;
+using WidgetsJSON.PriceChangedEvent;
 
 namespace WidgetsJSON
 {
