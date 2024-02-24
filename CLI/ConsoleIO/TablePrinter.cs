@@ -40,7 +40,7 @@ internal static class TablePrinter
         Console.WriteLine(new string('—', currentWidth));
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"Total data rows: {tableData.data.Length}");
-        Console.WriteLine($"Use Left-Right arrows to check other columns. Press any other button to move from this page.");
+        Console.WriteLine($"Use Left-Right arrows to check other columns. Use Up-Down arrows to change number of columns. Press any other button to move from this page.");
         Console.WriteLine($"To view more characters in a column, zoom in or zoom out the console window or chage the console font size");
 
         Console.ForegroundColor = ConsoleColor.White;

@@ -2,6 +2,7 @@
 using CLI.ConsoleIO;
 
 namespace CLI.MenuPages;
+
 /// <summary>
 /// Represents the home page menu with various options for data manipulation and program settings.
 /// </summary>
