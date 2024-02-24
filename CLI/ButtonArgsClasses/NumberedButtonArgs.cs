@@ -11,5 +11,5 @@ internal class NumberedButtonArgs : ButtonArgs
     public int Number { get; set; } = 0;
 
     public override string ToString() =>
-        $"[{(Number > 0 ? Number : string.Empty)}] {Name}";
+        $"[{(Number > 0 ? Number : ' '.ToString())}] {Name}";
 }
