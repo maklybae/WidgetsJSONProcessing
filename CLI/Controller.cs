@@ -4,7 +4,9 @@ using CLI.ConsoleIO;
 using CLI.MenuPages;
 using Model;
 
-
+/// <summary>
+/// Static class responsible for managing the application flow and user interaction.
+/// </summary>
 internal static class Controller
 {
     private static RequestProcessor _request = new();
@@ -25,23 +27,33 @@ internal static class Controller
     public static RequestProcessor Request => _request;
     public static WidgetSpecificationSelector Selector => _selector;
 
-    /// <summary>
-    /// Method to clear all data usage properties.
-    /// </summary>
+    // Using in case of emergency exceptions (not catched).
     private static void ClearAll()
     {
         MenuPagesStack.Clear();
         MenuPagesStack.Push(new HomePage());
         MenuPagesStack.Push(new SettingUpPage());
         _request = new();
+        ClearSelector();
     }
 
+    /// <summary>
+    /// Adds a widget number to the selector.
+    /// </summary>
+    /// <param name="widgetNum">The widget number to add.</param>
     public static void AddWidgetNumToSelector(int widgetNum) =>
         _selector.WidgetNum = widgetNum;
 
+    /// <summary>
+    /// Adds a specification number to the selector.
+    /// </summary>
+    /// <param name="specificationNum">The specification number to add.</param>
     public static void AddSpecificationNumToSelector(int specificationNum) =>
         _selector.SpecificationNum = specificationNum;
 
+    /// <summary>
+    /// Clears the widget and specification selector.
+    /// </summary>
     public static void ClearSelector() => _selector = new();
 
     /// <summary>
@@ -55,6 +67,10 @@ internal static class Controller
     /// </summary>
     public static void PopMenuPageFromStack() => MenuPagesStack.Pop();
 
+    /// <summary>
+    /// Peeks at the top menu page from the stack.
+    /// </summary>
+    /// <returns>The top menu page.</returns>
     public static MenuPage PeekMenuPageFromStack() => MenuPagesStack.Peek();
 
     /// <summary>

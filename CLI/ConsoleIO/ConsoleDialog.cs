@@ -2,6 +2,9 @@
 
 namespace CLI.ConsoleIO;
 
+/// <summary>
+/// Provides methods for interacting with the console to input various field types.
+/// </summary>
 internal class ConsoleDialog
 {
     /// <summary>
@@ -52,6 +55,11 @@ internal class ConsoleDialog
         return ConsoleInput.InputIntegerInRange(int.MinValue, int.MaxValue);
     }
 
+    /// <summary>
+    /// Takes user input for a double field.
+    /// </summary>
+    /// <param name="requestedName">The name of the field being input.</param>
+    /// <returns>User-inputted double.</returns>
     public static double InputDoubleField(string requestedName)
     {
         Console.WriteLine();
@@ -59,6 +67,11 @@ internal class ConsoleDialog
         return ConsoleInput.InputDoubleInRange(int.MinValue, int.MaxValue);
     }
 
+    /// <summary>
+    /// Takes user input for a DateTime field.
+    /// </summary>
+    /// <param name="requestedName">The name of the field being input.</param>
+    /// <returns>User-inputted DateTime.</returns>
     public static DateTime InputDateTimeField(string requestedName)
     {
         Console.WriteLine();
@@ -66,6 +79,11 @@ internal class ConsoleDialog
         return ConsoleInput.InputDateTime();
     }
 
+    /// <summary>
+    /// Takes user input to choose a sorting option for a field.
+    /// </summary>
+    /// <param name="field">The field for which the sorting option is chosen.</param>
+    /// <returns>Sorting option for the field.</returns>
     public static SortingOptions InputSortingOption(string field)
     {
         while (true)
@@ -102,6 +120,10 @@ internal class ConsoleDialog
         return res;
     }
 
+    /// <summary>
+    /// Takes user input to confirm whether to overwrite an existing file.
+    /// </summary>
+    /// <returns>True if the user chooses to overwrite, false otherwise.</returns>
     public static bool InputOverwriteFile()
     {
         while (true)

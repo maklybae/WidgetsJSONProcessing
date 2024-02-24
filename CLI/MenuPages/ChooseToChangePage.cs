@@ -1,16 +1,24 @@
 ﻿namespace CLI.MenuPages;
 using CLI.ButtonArgsClasses;
 
+/// <summary>
+/// Represents a menu page for choosing between widget and specification data to change.
+/// </summary>
 internal class ChooseToChangePage : MenuPage
 {
     private readonly DataTypeToChoose _option;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ChooseToChangePage"/> class.
+    /// </summary>
+    /// <param name="option">The data type to choose (Widget or Specification).</param>
     public ChooseToChangePage(DataTypeToChoose option)
     {
         _option = option;
         UpdateButtons();
     }
 
+    /// <inheritdoc/>
     public override void UpdateButtons()
     {
         if (_option == DataTypeToChoose.ChooseWidget)
@@ -33,15 +41,17 @@ internal class ChooseToChangePage : MenuPage
         Buttons.Add((MoveToPreviousPage, new ButtonArgs("Back to menu")));
     }
 
+    /// <summary>
+    /// Enum representing the data type to choose (Widget or Specification).
+    /// </summary>
     public enum DataTypeToChoose
     {
         ChooseWidget,
         ChooseSpecification
     }
 
-    /// <summary>
-    /// Moves to the previous menu by popping the current menu page from the stack.
-    /// </summary>
+    // Below are private methods to manage functionality of program.
+
     private void MoveToPreviousPage()
     {
         Controller.PopMenuPageFromStack();
@@ -59,6 +69,8 @@ internal class ChooseToChangePage : MenuPage
             Controller.AddSpecificationNumToSelector(CurrentOption);
         }
         Controller.PopMenuPageFromStack();
+
+        // Show information immediately in changing menu.
         Controller.PeekMenuPageFromStack().UpdateButtons();
     }
 }

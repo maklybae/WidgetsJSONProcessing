@@ -1,7 +1,15 @@
 ﻿namespace CLI;
 
+/// <summary>
+/// Static class responsible for converting data into a jagged string array format.
+/// </summary>
 internal static class DataConverter
 {
+    /// <summary>
+    /// Converts a list of items into a jagged string array.
+    /// </summary>
+    /// <param name="items">List of items to be converted.</param>
+    /// <returns>Jagged string array representing the converted data.</returns>
     public static string[][] ConvertToJaggedArray(
         List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
         List<(string specName, double specPrice, bool isCustom)> specifications)> items)

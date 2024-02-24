@@ -3,6 +3,9 @@ using CLI.ConsoleIO;
 
 namespace CLI.MenuPages;
 
+/// <summary>
+/// Represents an abstract menu page with a list of options.
+/// </summary>
 internal abstract class MenuPage
 {
     private List<(Action? buttonAction, ButtonArgs args)> _buttons;
@@ -40,6 +43,9 @@ internal abstract class MenuPage
         _buttons = new();
     }
 
+    /// <summary>
+    /// Updates the list of options on the menu page.
+    /// </summary>
     public abstract void UpdateButtons();
 
     /// <summary>

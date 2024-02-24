@@ -5,6 +5,9 @@ using WidgetsJSON.PriceChangedEvent;
 
 namespace WidgetsJSON;
 
+/// <summary>
+/// Represents a widget, derived from <see cref="JSONDataType"/>.
+/// </summary>
 public class Widget : JSONDataType
 {
     private string _id = string.Empty;
@@ -18,17 +21,17 @@ public class Widget : JSONDataType
     private Widget() { }
 
     /// <summary>
-    /// 
+    /// Initializes a new instance of the <see cref="Widget"/> class with specified values.
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="name"></param>
-    /// <param name="quantity"></param>
-    /// <param name="price"></param>
-    /// <param name="isAvailable"></param>
-    /// <param name="manufactureDate"></param>
-    /// <param name="specifications"></param>
-    /// <exception cref="ArgumentException"></exception>
-    /// <exception cref="JsonException"></exception>
+    /// <param name="id">The ID of the widget.</param>
+    /// <param name="name">The name of the widget.</param>
+    /// <param name="quantity">The quantity of the widget.</param>
+    /// <param name="price">The price of the widget.</param>
+    /// <param name="isAvailable">A flag indicating whether the widget is available.</param>
+    /// <param name="manufactureDate">The manufacture date of the widget.</param>
+    /// <param name="specifications">The specifications of the widget.</param>
+    /// <exception cref="ArgumentException">Thrown when input values are invalid.</exception>
+    /// <exception cref="JsonException">Thrown when there is an issue with JSON processing.</exception>
     public Widget(string id, string name, int quantity, double price, bool? isAvailable, DateTime manufactureDate, List<Specification> specifications)
     {
         Id = id;
@@ -40,8 +43,14 @@ public class Widget : JSONDataType
         Specifications = specifications;
     }
 
+    /// <summary>
+    /// Event triggered when the price of the widget changes.
+    /// </summary>
     public event EventHandler<PriceChangedEventArgs>? PriceChanged;
 
+    /// <summary>
+    /// Gets or sets the ID of the widget.
+    /// </summary>
     [JsonPropertyName("widgetId")]
     public string Id
     { 
@@ -56,6 +65,9 @@ public class Widget : JSONDataType
         }
     }
 
+    /// <summary>
+    /// Gets or sets the name of the widget.
+    /// </summary>
     [JsonPropertyName("name")]
     public string Name
     { 
@@ -71,6 +83,9 @@ public class Widget : JSONDataType
         }
     }
 
+    /// <summary>
+    /// Gets or sets the quantity of the widget.
+    /// </summary>
     [JsonPropertyName("quantity")]
     public int Quantity
     { 
@@ -86,6 +101,9 @@ public class Widget : JSONDataType
         }
     }
 
+    /// <summary>
+    /// Gets or sets the price of the widget.
+    /// </summary>
     [JsonPropertyName("price")]
     public double Price
     { 
@@ -102,6 +120,9 @@ public class Widget : JSONDataType
         }
     }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the widget is available.
+    /// </summary>
     [JsonPropertyName("isAvailable")]
     public bool? IsAvailable {
         get => _isAvailable;
@@ -116,6 +137,9 @@ public class Widget : JSONDataType
         }
     }
 
+    /// <summary>
+    /// Gets or sets the manufacture date of the widget.
+    /// </summary>
     [JsonPropertyName("manufactureDate")]
     public DateTime ManufactureDate 
     { 
@@ -131,7 +155,9 @@ public class Widget : JSONDataType
         } 
     }
 
-    // Использовать копию для стороннего доступа, внутри -- поле.
+    /// <summary>
+    /// Gets or sets the specifications of the widget.
+    /// </summary>
     [JsonPropertyName("specifications")]
     public List<Specification> Specifications 
     {
@@ -146,6 +172,10 @@ public class Widget : JSONDataType
         }
     }
 
+    /// <summary>
+    /// Raises the PriceChanged event.
+    /// </summary>
+    /// <param name="e">Event arguments containing the price difference.</param>
     protected virtual void OnPriceChanged(PriceChangedEventArgs e)
     {
         PriceChanged?.Invoke(this, e);

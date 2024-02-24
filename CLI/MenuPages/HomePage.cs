@@ -14,6 +14,7 @@ internal class HomePage : MenuPage
     public HomePage() =>
         UpdateButtons();
 
+    // <inheritdoc/>
     public override void UpdateButtons()
     {
         Buttons = new()
@@ -28,6 +29,8 @@ internal class HomePage : MenuPage
         };
     }
 
+    // Below are private methods to manage functionality of program. 
+
     private void MoveToChangeDataMenu()
     {
         Controller.ClearSelector();
@@ -35,33 +38,18 @@ internal class HomePage : MenuPage
         Controller.AddMenuPageToStack(new ChooseToChangePage(ChooseToChangePage.DataTypeToChoose.ChooseWidget));
     }
 
-    /// <summary>
-    /// Moves to the data output menu by adding it to the menu stack.
-    /// </summary>
     private void ShowCurrentTableData()
     {
         TablePrinter.ShowTableView((Controller.Request.AltenativeFieldsNames, DataConverter.ConvertToJaggedArray(Controller.Request.GetAllItems())));
     }
 
-    /// <summary>
-    /// Moves to the sorting menu by adding it to the menu stack.
-    /// </summary>
     private void MoveToSortingMenu() => Controller.AddMenuPageToStack(new SortingPage());
 
     private void MoveToSavingMenu() => Controller.AddMenuPageToStack(new SavingPage(SavingPage.SavingType.SaveCurrent));
 
-    /// <summary>
-    /// Moves to the configuration setup menu by adding it to the menu stack.
-    /// </summary>
     private void MoveToSettinUpMenu() => Controller.AddMenuPageToStack(new SettingUpPage());
 
-    /// <summary>
-    /// Prints the help page to the console.
-    /// </summary>
     private void MoveToHelp() => ConsoleOutput.PrintHelpPage();
 
-    /// <summary>
-    /// Exits the program by terminating the environment.
-    /// </summary>
     private void Exit() => Environment.Exit(0);
 }

@@ -2,21 +2,40 @@
 
 namespace Model;
 
+/// <summary>
+/// Processes requests related to widget data and manages interactions with the underlying database.
+/// </summary>
 public class RequestProcessor
 {
     private Database? _database;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RequestProcessor"/> class.
+    /// </summary>
     public RequestProcessor() { }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RequestProcessor"/> class with the specified file path.
+    /// </summary>
+    /// <param name="filePath">The path to the JSON file containing widget data.</param>
     public RequestProcessor(string filePath) =>
         _database = new Database(filePath);
 
+    /// <summary>
+    /// Gets a value indicating whether the request processor is ready with a loaded database.
+    /// </summary>
     public bool IsReady => _database != null;
 
+    /// <summary>
+    /// Sets the database to a new instance based on the provided file path.
+    /// </summary>
+    /// <param name="filePath">The path to the new JSON file containing widget data.</param>
     public void RebaseProcessor(string filePath) =>
         _database = new Database(filePath);
 
-
+    /// <summary>
+    /// Gets a list of pairs containing widget IDs and names.
+    /// </summary>
     public List<(string id, string name)> WidgetsIdNamesPairs
     {
         get
@@ -31,6 +50,9 @@ public class RequestProcessor
         }
     }
 
+    /// <summary>
+    /// Gets the number of fields in the JSON representation of a widget.
+    /// </summary>
     public int FieldsCount
     {
         get
@@ -43,6 +65,9 @@ public class RequestProcessor
         }
     }
 
+    /// <summary>
+    /// Gets an array of alternative field names used in the JSON representation of a widget.
+    /// </summary>
     public string[] AltenativeFieldsNames
     {
         get
@@ -55,9 +80,17 @@ public class RequestProcessor
         }
     }
 
+    /// <summary>
+    /// Gets the original file path from which the database was loaded.
+    /// </summary>
     public string OriginalFilePath =>
            _database?.OriginFilePath ?? throw new NullReferenceException();
 
+    /// <summary>
+    /// Converts the specified list of widgets to a tuple format.
+    /// </summary>
+    /// <param name="widgets">The list of widgets to convert.</param>
+    /// <returns>A list of tuples representing widget data.</returns>
     private static List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
         List<(string specName, double specPrice, bool isCustom)> specifications)> ConvertToTuple(List<Widget> widgets)
     {
@@ -66,6 +99,11 @@ public class RequestProcessor
             item.Specifications.ConvertAll(spec => (spec.Name, spec.Price, spec.IsCustom ?? false))));
     }
 
+    /// <summary>
+    /// Gets the specifications by widget number.
+    /// </summary>
+    /// <param name="widgetNum">The number of the widget.</param>
+    /// <returns>The list of specification names for the specified widget.</returns>
     public List<string> GetSpecificationsByWidgetNum(int widgetNum)
     {
         if (_database == null)
@@ -77,6 +115,10 @@ public class RequestProcessor
         return res;
     }
 
+    /// <summary>
+    /// Gets all items in the database.
+    /// </summary>
+    /// <returns>The list of tuples representing all items in the database.</returns>
     public List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
         List<(string specName, double specPrice, bool isCustom)> specifications)> GetAllItems()
     {
@@ -86,6 +128,8 @@ public class RequestProcessor
         }
         return ConvertToTuple(_database.Data);
     }
+
+    // Below are public methods to get information about specified Widget.
 
     public string GetIdByWidgetNum(int widgetNum) =>
         _database?.Data[widgetNum].Id ?? throw new NullReferenceException();
@@ -99,6 +143,9 @@ public class RequestProcessor
         _database?.Data[widgetNum].IsAvailable ?? throw new NullReferenceException();
     public DateTime GetManufactureDateByWidgetNum(int widgetNum) =>
         _database?.Data[widgetNum].ManufactureDate ?? throw new NullReferenceException();
+
+    // Below are public methods to get information about specified Widget.
+
     public int GetSpecificationsCountByWidgetNum(int widgetNum) =>
         _database?.Data[widgetNum].Specifications.Count ?? throw new NullReferenceException();
 
@@ -108,6 +155,8 @@ public class RequestProcessor
         _database?.Data[widgetNum].Specifications[specificationNum].Price ?? throw new NullReferenceException();
     public bool GetSpecificationIsCustomByNums(int widgetNum, int specifcationNum) =>
         _database?.Data[widgetNum].Specifications[specifcationNum].IsCustom ?? throw new NullReferenceException();
+
+    // Below are public methods to change information about specified Widget.
 
     public void ChangeNameByWidgetNum(int widgetNum, string value)
     {
@@ -138,6 +187,8 @@ public class RequestProcessor
         if (_database == null) throw new NullReferenceException();
         _database.Data[widgetNum].ManufactureDate = value;
     }
+    
+    // Below are public methods to change specified Specification.
 
     public void ChangeSpecificationNameByNums(int widgetNum, int specificationNum, string value)
     {
@@ -209,6 +260,13 @@ public class RequestProcessor
         return orderer;
     }
 
+
+    /// <summary>
+    /// Sorts the data based on the specified keys and sorting options.
+    /// </summary>
+    /// <param name="keys">The list of keys for sorting.</param>
+    /// <param name="sortingOptions">The dictionary containing sorting options for each key.</param>
+    /// <returns>The sorted list of tuples representing the data.</returns>
     public List<(string widgetId, string name, int quantity, double price, bool isAvailable, DateTime manufactureDate,
         List<(string specName, double specPrice, bool isCustom)> specifications)> Sort(List<string>? keys, Dictionary<string, SortingOptions>? sortingOptions)
     {
@@ -232,6 +290,10 @@ public class RequestProcessor
         return ConvertToTuple(orderer?.ToList() ?? _database.Data);
     }
 
+    /// <summary>
+    /// Saves the database to the specified file path.
+    /// </summary>
+    /// <param name="filePath">The file path to save the database.</param>
     public void Save(string filePath)
     {
         if (_database == null)
@@ -239,6 +301,10 @@ public class RequestProcessor
         _database.Save(filePath);
     }
 
+    /// <summary>
+    /// Saves the cached data to the specified file path.
+    /// </summary>
+    /// <param name="filePath">The file path to save the cached data.</param>
     public void SaveCache(string filePath)
     {
         if (_database == null)
@@ -246,6 +312,10 @@ public class RequestProcessor
         _database.SaveCache(filePath);
     }
 
+    /// <summary>
+    /// Gets the JSON string representation of the cached data.
+    /// </summary>
+    /// <returns>The JSON string representation of the cached data.</returns>
     public string GetJsonStringCache()
     {
         if (_database == null)
@@ -253,6 +323,10 @@ public class RequestProcessor
         return _database.GetJsonStringCache();
     }
 
+    /// <summary>
+    /// Gets the JSON string representation of the database data.
+    /// </summary>
+    /// <returns>The JSON string representation of the database data.</returns>
     public string GetJsonStringData()
     {
         if (_database == null)

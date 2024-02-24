@@ -1,7 +1,8 @@
-﻿using Microsoft.VisualBasic;
+﻿namespace CLI.ConsoleIO;
 
-namespace CLI.ConsoleIO;
-
+/// <summary>
+/// Provides methods for handling console output.
+/// </summary>
 internal static class ConsoleOutput
 {
     private const string HelpText = @"This program was created by Maksim Klychkov as a solution to homework 2, module 3, variant 4.
@@ -82,7 +83,7 @@ Then, you will be able to:
     /// <summary>
     /// Prints an ASCII art or a basic title for welcome, depending on the console window width.
     /// </summary>
-    internal static void PrintWelcome()
+    public static void PrintWelcome()
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
         // Limit width to fit to console.
@@ -97,6 +98,9 @@ Then, you will be able to:
         Console.ForegroundColor = ConsoleColor.White;
     }
 
+    /// <summary>
+    /// Clears the console buffer.
+    /// </summary>
     public static void ClearBuffer()
     {
         Console.Clear();
@@ -104,6 +108,10 @@ Then, you will be able to:
         Console.Clear();
     }
 
+    /// <summary>
+    /// Prints a message and waits for a key press.
+    /// </summary>
+    /// <param name="data">The message to print.</param>
     public static void PrintUntilKeyPressed(string data)
     {
         ClearBuffer();
@@ -111,6 +119,10 @@ Then, you will be able to:
         Console.ReadKey(true);
     }
 
+    /// <summary>
+    /// Prints a selected text with contrasting colors.
+    /// </summary>
+    /// <param name="text">The text to be printed.</param>
     public static void PrintSelected(string text)
     {
         Console.BackgroundColor = ConsoleColor.White;
@@ -120,6 +132,12 @@ Then, you will be able to:
         Console.WriteLine();
     }
 
+    /// <summary>
+    /// Prints an issue and a fix recommendation with specified text colors.
+    /// </summary>
+    /// <param name="issue">The issue message.</param>
+    /// <param name="fixRecommendation">The fix recommendation message.</param>
+    /// <param name="isStopped">Indicates whether to wait for a key press if true.</param>
     public static void PrintIssue(string issue, string fixRecommendation, bool isStopped = false)
     {
         ClearBuffer();
@@ -135,6 +153,9 @@ Then, you will be able to:
             Console.ReadKey(true);
     }
 
+    /// <summary>
+    /// Prints a help page with ASCII art, help text, and author information.
+    /// </summary>
     internal static void PrintHelpPage()
     {
         ClearBuffer();

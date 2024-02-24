@@ -17,9 +17,7 @@ internal class FileManagerPage : MenuPage
     /// </summary>
     public FileManagerPage() => UpdateButtons();
 
-    /// <summary>
-    /// Updates the option list based on the current directory's content.
-    /// </summary>
+    /// <inheritdoc/>
     public override void UpdateButtons()
     {
         Buttons.Clear();
@@ -34,9 +32,11 @@ internal class FileManagerPage : MenuPage
         CurrentOption = 0;
     }
 
+    // Below are private methods to update list of dirs/files in the menu list.
+
     private void UpdateJSONFiles()
     {
-        // Add JSON files in the current directory as options
+        // Add JSON files in the current directory as options.
         Buttons.Add((null, new ButtonArgs("==JSON Files in the current directory==")));
         foreach (var file in _currentDirectory.EnumerateFiles("*.json"))
         {
@@ -47,7 +47,7 @@ internal class FileManagerPage : MenuPage
 
     private void UpdateDirectories()
     {
-        // Add directories as options
+        // Add directories as options.
         Buttons.Add((null, new ButtonArgs("==Directories in the current directory==")));
         foreach (var directory in _currentDirectory.EnumerateDirectories())
         {
@@ -58,7 +58,7 @@ internal class FileManagerPage : MenuPage
 
     private void UpdateParentDirectory()
     {
-        // Add the parent directory as an option if it exists and is not a drive
+        // Add the parent directory as an option if it exists and is not a drive.
         if (_currentDirectory.Parent != null &&
             !Array.ConvertAll(DriveInfo.GetDrives(), drive => drive.Name).Contains(_currentDirectory.Parent.FullName))
         {
@@ -70,7 +70,7 @@ internal class FileManagerPage : MenuPage
 
     private void UpdateDrives()
     {
-        // Add drives as options
+        // Add drives as options.
         Buttons.Add((null, new ButtonArgs("==Drives==")));
         var drives = Array.ConvertAll(DriveInfo.GetDrives(), drive => drive.Name);
         foreach (var drive in drives)
@@ -80,10 +80,8 @@ internal class FileManagerPage : MenuPage
         Buttons.Add((null, new ButtonArgs(string.Empty)));
     }
 
-    /// <summary>
-    /// Opens the selected directory, updating the current directory, and refreshing the option list.
-    /// Handles security, argument, and directory not found exceptions, printing appropriate messages.
-    /// </summary>
+    // Below are private methods to manage functionality of program.
+
     private void OpenDirectory()
     {
         try
@@ -111,17 +109,11 @@ internal class FileManagerPage : MenuPage
         UpdateButtons();
     }
 
-    /// <summary>
-    /// Opens the selected JSON file, sets its data, and returns to the previous menu.
-    /// </summary>
     private void OpenFile()
     {
         FileLinker.LinkFile(Buttons[CurrentOption].args.Name);
         Controller.PopMenuPageFromStack();
     }
 
-    /// <summary>
-    /// Moves to the previous menu by popping the current menu page from the stack.
-    /// </summary>
     private void MoveToPreviousPage() => Controller.PopMenuPageFromStack();
 }

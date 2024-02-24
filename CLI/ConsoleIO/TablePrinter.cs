@@ -1,18 +1,10 @@
-﻿using Microsoft.VisualBasic;
-using System.Net.NetworkInformation;
-
-namespace CLI.ConsoleIO;
+﻿namespace CLI.ConsoleIO;
 
 internal static class TablePrinter
 {
     private const int DefaultColumnsInConsole = 4;
     private static readonly int s_maxColumnsInConsole = Controller.Request.FieldsCount;
 
-    /// <summary>
-    /// Shows a table view with auto-width console output.
-    /// </summary>
-    /// <param name="tableData">Pair of headings and data for the table.</param>
-    /// <param name="columnToExclude">Index of the column to exclude from printing if the value is null.</param>
     private static void PrintTableView((string[] headings, string[][] data) tableData, int currentWidth, int first, int last)
     {
         int columnWidth = (currentWidth - last - first + 1) / (last - first);

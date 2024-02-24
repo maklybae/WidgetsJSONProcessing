@@ -3,6 +3,9 @@ using CLI.ConsoleIO;
 
 namespace CLI.MenuPages;
 
+/// <summary>
+/// Represents a menu page for setting up the application, including inputting JSON data.
+/// </summary>
 internal class SettingUpPage : MenuPage
 {
     /// <summary>
@@ -10,6 +13,7 @@ internal class SettingUpPage : MenuPage
     /// </summary>
     public SettingUpPage() => UpdateButtons();
 
+    /// <inheritdoc/>
     public override void UpdateButtons()
     {
         Buttons = new()
@@ -20,25 +24,16 @@ internal class SettingUpPage : MenuPage
         };
     }
 
+    // Below are private methods to manage functionality of program.
+
     private void InputFromConsole() =>
         FileLinker.LinkFile(ConsoleInput.InputFullPath());
 
-
-    ///// <summary>
-    ///// Handles inputting JSON data from the console.
-    ///// </summary>
-    //private void InputJSONDataFromConsole() => ConsoleInput.InputJSONDataFromConsoleDialog();
-
-    /// <summary>
-    /// Handles inputting JSON data from a local file using the file manager menu.
-    /// </summary>
     private void InputFromManager() => Controller.AddMenuPageToStack(new FileManagerPage());
 
-    /// <summary>
-    /// Moves to the main menu with all possible data processing functions.
-    /// </summary>
     private void MoveToMainMenu()
     {
+        // Do not run the main menu before requester is not ready.
         if (Controller.Request.IsReady)
             Controller.PopMenuPageFromStack();
         else

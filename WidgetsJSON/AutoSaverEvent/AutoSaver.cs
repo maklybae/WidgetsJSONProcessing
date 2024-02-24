@@ -1,5 +1,8 @@
 ﻿namespace WidgetsJSON.AutoSaverEvent;
 
+/// <summary>
+/// Handles auto-saving functionality for objects that implement the <see cref="JSONDataType"/> interface.
+/// </summary>
 public class AutoSaver
 {
     private const int MaxDelayInSeconds = 15;
@@ -10,6 +13,11 @@ public class AutoSaver
 
     private AutoSaver() { }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AutoSaver"/> class with the original file path and a save action.
+    /// </summary>
+    /// <param name="originalPath">The original file path.</param>
+    /// <param name="saveAction">The action to save the file.</param>
     public AutoSaver(string originalPath, Action<string> saveAction)
     {
         _saveAction = saveAction;
@@ -23,7 +31,6 @@ public class AutoSaver
         if ((e.Happened - _previusHappened).TotalSeconds <= MaxDelayInSeconds)
         {
             Save();
-            File.AppendAllText("events.log", $"{DateTime.Now} AutoSaver{Environment.NewLine}");
         }
 
         _previusHappened = e.Happened;
@@ -31,9 +38,17 @@ public class AutoSaver
 
     private void Save() => _saveAction?.Invoke(_pathToAutoSave);
 
+    /// <summary>
+    /// Registers an object for auto-saving by subscribing to its <see cref="JSONDataType.Updated"/> event.
+    /// </summary>
+    /// <param name="obj">The object implementing the <see cref="JSONDataType"/> interface.</param>
     public void Register(JSONDataType obj) =>
         obj.Updated += OnUpdatedEventHandler;
 
+    /// <summary>
+    /// Unregisters an object from auto-saving by unsubscribing from its <see cref="JSONDataType.Updated"/> event.
+    /// </summary>
+    /// <param name="obj">The object implementing the <see cref="JSONDataType"/> interface.</param>S
     public void Unregister(JSONDataType obj) =>
         obj.Updated -= OnUpdatedEventHandler;
 }

@@ -3,13 +3,20 @@ using CLI.ConsoleIO;
 
 namespace CLI.MenuPages;
 
+/// <summary>
+/// Represents a menu page for changing widget details.
+/// </summary>
 internal class ChangeWidgetPage : MenuPage
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ChangeWidgetPage"/> class.
+    /// </summary>
     public ChangeWidgetPage()
     {
         UpdateButtons();
     }
 
+    /// <inheritdoc/>
     public override void UpdateButtons()
     {
         int currentWidgetNum = Controller.Selector.WidgetNum;
@@ -26,6 +33,9 @@ internal class ChangeWidgetPage : MenuPage
     };
     }
 
+    // Below are private methods to manage functionality of program.
+
+    // Restriction by task description in .pdf file
     private void ChangeId() =>
         ConsoleOutput.PrintIssue("It is restricted to change id", string.Empty, true);
 
@@ -99,6 +109,7 @@ internal class ChangeWidgetPage : MenuPage
 
     private void ChangeSpecifications()
     {
+        // Adding new menu pages with selecting Specification and changing it.
         Controller.AddMenuPageToStack(new ChangeSpecificationPage());
         Controller.AddMenuPageToStack(new ChooseToChangePage(ChooseToChangePage.DataTypeToChoose.ChooseSpecification));
     }

@@ -3,24 +3,42 @@ using CLI.ConsoleIO;
 
 namespace CLI.MenuPages
 {
+    /// <summary>
+    /// Represents a menu page for saving data with various options.
+    /// </summary>
     internal class SavingPage : MenuPage
     {
         private readonly SavingType _type;
 
+        // Private constructor to prevent instantiation without a specified SavingType.
         private SavingPage() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SavingPage"/> class with a specified SavingType.
+        /// </summary>
+        /// <param name="type">The SavingType to determine the behavior of the SavingPage.</param>
         public SavingPage(SavingType type)
         {
             _type = type;
             UpdateButtons();
         }
 
+        /// <summary>
+        /// Enumeration representing different saving types.
+        /// </summary>
         public enum SavingType
         {
+            /// <summary>
+            /// Save recetly requested data.
+            /// </summary>
             SaveCache,
+            /// <summary>
+            /// Save all data in database.
+            /// </summary>
             SaveCurrent
         }
 
+        /// <inheritdoc/>
         public override void UpdateButtons()
         {
             Buttons.Add((SaveToDesktop, new ButtonArgs("Save to the desktop directory")));
@@ -30,10 +48,12 @@ namespace CLI.MenuPages
             Buttons.Add((PrintJSONFormattedData, new ButtonArgs($"Print JSON Formatted data in console")));
             Buttons.Add((MoveToPreviousPage, new ButtonArgs("Move to previus menu page")));
         }
+
         private void RunSaving(string path)
         {
             try
             {
+                // Check for the file extension.
                 if (!path.ToLower().EndsWith(".json"))
                     throw new IOException();
                 if (!File.Exists(path) || ConsoleDialog.InputOverwriteFile())
@@ -59,6 +79,8 @@ namespace CLI.MenuPages
                 ConsoleOutput.PrintIssue("Unable to open securied files", "Check the properties of the file", true);
             }
         }
+
+        // Below are private methods to manage functionality of program.
 
         private void SaveToDesktop()
         {
