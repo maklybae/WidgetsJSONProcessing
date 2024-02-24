@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WidgetsJSON.JSONDataType">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAAAAEAAAA=</HashCode>
+      <FileName>JSONDataType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WidgetsJSON.Specification">
+    <Position X="3" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAIAAAAQgAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Specification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WidgetsJSON.Widget">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkACIAAAAQAAAAEBAABAgAQAAAAAACAAgAABgIAAAAA=</HashCode>
+      <FileName>Widget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WidgetsJSON.AutoSaverEvent.AutoSaver">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJAIAAAAAAAgAAAAAAAAAAAAABAAgAAAIAAAAAEAA=</HashCode>
+      <FileName>AutoSaverEvent\AutoSaver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WidgetsJSON.AutoSaverEvent.UpdatedEventArgs">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AutoSaverEvent\UpdatedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WidgetsJSON.PriceChangedEvent.PriceChangedEventArgs">
+    <Position X="7.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PriceChangedEvent\PriceChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WidgetsJSON.PriceChangedEvent.PriceRedistributor">
+    <Position X="5.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAQgAAAAAAAABAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>PriceChangedEvent\PriceRedistributor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
