@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CLI.Controller">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAAAIAAAAAAABQQAAQAAAAAABAgAAAQAAAQCABAAA=</HashCode>
+      <FileName>Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.ChangeSpecificationPage" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAABAAAAAAAAAAAAAAABAAAAAAAEAAAEA=</HashCode>
+      <FileName>MenuPages\ChangeSpecificationPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.ChangeWidgetPage" Collapsed="true">
+    <Position X="4.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAAAAAAgIABAAAAAAAAAAACCAABAAAAAAAEAAAAA=</HashCode>
+      <FileName>MenuPages\ChangeWidgetPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.ChooseToChangePage" Collapsed="true">
+    <Position X="4.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAgAAAAAAAgAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuPages\ChooseToChangePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.FileManagerPage" Collapsed="true">
+    <Position X="4.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQAAAAgAAAJAAAAEAAAAAAIAAFAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuPages\FileManagerPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.HomePage" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgABAAAAAAAAAgACAAAIAABIAAAAAAAAAA=</HashCode>
+      <FileName>MenuPages\HomePage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.MenuPage">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAggAAAAAAAAAAAAAAABAAAAIAAAAQAAAAg=</HashCode>
+      <FileName>MenuPages\MenuPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.SavingPage" Collapsed="true">
+    <Position X="4.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAgCAAQAAAAAAAAAAAAAIBAAAAEAAAAAAgA=</HashCode>
+      <FileName>MenuPages\SavingPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.SettingUpPage" Collapsed="true">
+    <Position X="4.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>MenuPages\SettingUpPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CLI.MenuPages.SortingPage" Collapsed="true">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEgAAAIAAAAAAAAAAAAAABAAAACAAAAAAAA=</HashCode>
+      <FileName>MenuPages\SortingPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
