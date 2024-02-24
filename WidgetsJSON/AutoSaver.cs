@@ -4,29 +4,32 @@
     {
         private const int MaxDelayInSeconds = 15;
 
-        private string _originalJsonFileName = "tmp.json";
+        private readonly string _pathToAutoSave = "tmp.json";
+        private readonly Action<string>? _saveAction;
         private DateTime _previusHappened = DateTime.MinValue;
 
         private AutoSaver() { }
 
-        public AutoSaver(string originalJsonFileName)
+        public AutoSaver(string originalPath, Action<string> saveAction)
         {
-            OriginalJsonFileName = originalJsonFileName;
+            _saveAction = saveAction;
+            FileInfo jsonFile = new FileInfo(originalPath);
+            _pathToAutoSave = Path.Combine(
+                jsonFile.DirectoryName ?? string.Empty, $"{Path.GetFileNameWithoutExtension(jsonFile.Name)}_tmp.json");
         }
 
-        public string OriginalJsonFileName { get { return _originalJsonFileName; } set { _originalJsonFileName = value; } }
-
         private void OnUpdatedEventHandler(object? sender, UpdatedEventArgs e)
-        { 
+        {
             if ((e.Happened - _previusHappened).TotalSeconds <= MaxDelayInSeconds)
             {
                 Save();
+                File.AppendAllText("events.log", $"{DateTime.Now} AutoSaver{Environment.NewLine}");
             }
 
             _previusHappened = e.Happened;
         }
 
-        private void Save() { }
+        private void Save() => _saveAction?.Invoke(_pathToAutoSave);
 
         public void Register(JSONDataType obj) =>
             obj.Updated += OnUpdatedEventHandler;

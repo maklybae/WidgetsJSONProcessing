@@ -1,0 +1,522 @@
+[
+  {
+    "widgetId": "13dee0f4-0442-4427-82a3-7988bdaf94d7",
+    "name": "hello",
+    "quantity": 12,
+    "price": 246.37,
+    "isAvailable": true,
+    "manufactureDate": "2023-12-15T04:28:12.187619",
+    "specifications": [
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 95.75,
+        "isCustom": true
+      },
+      {
+        "specName": "Material Composition",
+        "specPrice": 62.65,
+        "isCustom": true
+      },
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 87.97,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "209ee361-fc05-4ac6-ac7b-3d9dbcd33de6",
+    "name": "imagine",
+    "quantity": 4,
+    "price": 108.21,
+    "isAvailable": false,
+    "manufactureDate": "2020-07-04T08:52:38.939768",
+    "specifications": [
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 38.23,
+        "isCustom": false
+      },
+      {
+        "specName": "Weight Distribution",
+        "specPrice": 27.82,
+        "isCustom": true
+      },
+      {
+        "specName": "Dimensionality",
+        "specPrice": 42.16,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "41fa1056-114c-41d8-adf1-f7d5ff3d966f",
+    "name": "represent",
+    "quantity": 23,
+    "price": 326.79,
+    "isAvailable": false,
+    "manufactureDate": "2023-04-24T02:07:37.523961",
+    "specifications": [
+      {
+        "specName": "Material Composition",
+        "specPrice": 82.85,
+        "isCustom": false
+      },
+      {
+        "specName": "Color Options",
+        "specPrice": 79.92,
+        "isCustom": true
+      },
+      {
+        "specName": "Operational Range",
+        "specPrice": 95.59,
+        "isCustom": true
+      },
+      {
+        "specName": "Connectivity Features",
+        "specPrice": 68.43,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "656765c3-a48d-4848-84a6-33f9996c9731",
+    "name": "world",
+    "quantity": 18,
+    "price": 251.72,
+    "isAvailable": true,
+    "manufactureDate": "2020-03-10T12:28:05.384821",
+    "specifications": [
+      {
+        "specName": "Power Efficiency",
+        "specPrice": 63.5,
+        "isCustom": true
+      },
+      {
+        "specName": "Dimensionality",
+        "specPrice": 60.57,
+        "isCustom": true
+      },
+      {
+        "specName": "Color Options",
+        "specPrice": 50.78,
+        "isCustom": false
+      },
+      {
+        "specName": "Connectivity Features",
+        "specPrice": 76.87,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "6590482d-2abc-485e-93b8-4561ee14ba94",
+    "name": "single",
+    "quantity": 47,
+    "price": 168.5,
+    "isAvailable": true,
+    "manufactureDate": "2021-03-23T14:01:58.336949",
+    "specifications": [
+      {
+        "specName": "Connectivity Features",
+        "specPrice": 45.03,
+        "isCustom": false
+      },
+      {
+        "specName": "Dimensionality",
+        "specPrice": 76.84,
+        "isCustom": true
+      },
+      {
+        "specName": "Connectivity Features",
+        "specPrice": 46.63,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "6b0cd9f6-51a6-4101-a755-6e26375aa91c",
+    "name": "one",
+    "quantity": 14,
+    "price": 132.89,
+    "isAvailable": false,
+    "manufactureDate": "2020-08-18T02:02:49.926517",
+    "specifications": [
+      {
+        "specName": "Dimensionality",
+        "specPrice": 97.85,
+        "isCustom": false
+      },
+      {
+        "specName": "Weight Distribution",
+        "specPrice": 35.04,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "87b30336-cfbf-4346-859e-b9aed48c471e",
+    "name": "along",
+    "quantity": 37,
+    "price": 162.14999999999998,
+    "isAvailable": false,
+    "manufactureDate": "2022-08-21T11:12:28.539953",
+    "specifications": [
+      {
+        "specName": "Operational Range",
+        "specPrice": 92.77,
+        "isCustom": true
+      },
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 69.38,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "89320bee-18bf-4c3d-af99-8384060e369a",
+    "name": "least",
+    "quantity": 26,
+    "price": 159.89000000000001,
+    "isAvailable": false,
+    "manufactureDate": "2020-12-07T04:29:40.667552",
+    "specifications": [
+      {
+        "specName": "Color Options",
+        "specPrice": 64.73,
+        "isCustom": false
+      },
+      {
+        "specName": "Operational Range",
+        "specPrice": 63.82,
+        "isCustom": true
+      },
+      {
+        "specName": "Color Options",
+        "specPrice": 31.34,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "8fe5a4ca-5ad5-4ed9-810a-cc60ccd06ce9",
+    "name": "wife",
+    "quantity": 20,
+    "price": 176.62,
+    "isAvailable": false,
+    "manufactureDate": "2020-05-26T20:55:16.096213",
+    "specifications": [
+      {
+        "specName": "Power Efficiency",
+        "specPrice": 98.13,
+        "isCustom": true
+      },
+      {
+        "specName": "Dimensionality",
+        "specPrice": 78.49,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "96f85277-c470-4309-97f0-725992483e78",
+    "name": "interesting",
+    "quantity": 50,
+    "price": 46.290000000000006,
+    "isAvailable": false,
+    "manufactureDate": "2023-01-21T07:20:58.225234",
+    "specifications": [
+      {
+        "specName": "Power Efficiency",
+        "specPrice": 32.84,
+        "isCustom": true
+      },
+      {
+        "specName": "Display Technology",
+        "specPrice": 13.45,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "9d2a4c39-440b-4f38-8d78-e56c30ad5326",
+    "name": "western",
+    "quantity": 34,
+    "price": 90.53999999999999,
+    "isAvailable": true,
+    "manufactureDate": "2022-11-06T05:38:04.781032",
+    "specifications": [
+      {
+        "specName": "Dimensionality",
+        "specPrice": 18.79,
+        "isCustom": true
+      },
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 44.8,
+        "isCustom": false
+      },
+      {
+        "specName": "Weight Distribution",
+        "specPrice": 26.95,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "9eaabaca-fd19-4be6-898b-12b47b5f3e4b",
+    "name": "sense",
+    "quantity": 47,
+    "price": 227.3,
+    "isAvailable": true,
+    "manufactureDate": "2021-01-24T01:48:21.19268",
+    "specifications": [
+      {
+        "specName": "Power Efficiency",
+        "specPrice": 39.98,
+        "isCustom": true
+      },
+      {
+        "specName": "Connectivity Features",
+        "specPrice": 29.46,
+        "isCustom": false
+      },
+      {
+        "specName": "Operational Range",
+        "specPrice": 74.28,
+        "isCustom": true
+      },
+      {
+        "specName": "Operational Range",
+        "specPrice": 83.58,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "a2bdd770-5dc1-422f-8e29-a609da10d113",
+    "name": "coach",
+    "quantity": 14,
+    "price": 199.73999999999998,
+    "isAvailable": false,
+    "manufactureDate": "2022-02-22T22:58:12.468111",
+    "specifications": [
+      {
+        "specName": "Display Technology",
+        "specPrice": 30.33,
+        "isCustom": false
+      },
+      {
+        "specName": "Material Composition",
+        "specPrice": 27.91,
+        "isCustom": true
+      },
+      {
+        "specName": "Durability Index",
+        "specPrice": 89.1,
+        "isCustom": true
+      },
+      {
+        "specName": "Display Technology",
+        "specPrice": 52.4,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "c3c9259e-8594-4b36-83d6-cc8f1bf43dea",
+    "name": "enjoy",
+    "quantity": 30,
+    "price": 177.8,
+    "isAvailable": false,
+    "manufactureDate": "2022-05-21T16:48:02.474184",
+    "specifications": [
+      {
+        "specName": "Material Composition",
+        "specPrice": 73.21,
+        "isCustom": false
+      },
+      {
+        "specName": "Dimensionality",
+        "specPrice": 64.95,
+        "isCustom": false
+      },
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 39.64,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "c63c6598-2d12-4183-bcd8-5fe9fe832cb2",
+    "name": "not",
+    "quantity": 25,
+    "price": 263.26,
+    "isAvailable": true,
+    "manufactureDate": "2022-02-10T14:03:42.368843",
+    "specifications": [
+      {
+        "specName": "Weight Distribution",
+        "specPrice": 54.38,
+        "isCustom": true
+      },
+      {
+        "specName": "Connectivity Features",
+        "specPrice": 57.74,
+        "isCustom": true
+      },
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 99.47,
+        "isCustom": false
+      },
+      {
+        "specName": "Material Composition",
+        "specPrice": 51.67,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "d6e50cbf-99be-4c31-87ee-38d4762eaace",
+    "name": "interest",
+    "quantity": 44,
+    "price": 158.82000000000002,
+    "isAvailable": true,
+    "manufactureDate": "2022-09-28T03:05:37.964975",
+    "specifications": [
+      {
+        "specName": "Operational Range",
+        "specPrice": 11.98,
+        "isCustom": true
+      },
+      {
+        "specName": "Display Technology",
+        "specPrice": 90.34,
+        "isCustom": false
+      },
+      {
+        "specName": "Dimensionality",
+        "specPrice": 32.13,
+        "isCustom": true
+      },
+      {
+        "specName": "Color Options",
+        "specPrice": 24.37,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "de5e8737-58e0-4690-ae53-53c0e47305e2",
+    "name": "where",
+    "quantity": 7,
+    "price": 220.53,
+    "isAvailable": true,
+    "manufactureDate": "2024-02-03T09:16:55.141987",
+    "specifications": [
+      {
+        "specName": "Energy Consumption",
+        "specPrice": 25.32,
+        "isCustom": false
+      },
+      {
+        "specName": "Color Options",
+        "specPrice": 21.52,
+        "isCustom": true
+      },
+      {
+        "specName": "Power Efficiency",
+        "specPrice": 97.28,
+        "isCustom": false
+      },
+      {
+        "specName": "Durability Index",
+        "specPrice": 76.41,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "f6ef1676-f663-4b3b-a44b-a7d7d83a04a0",
+    "name": "history",
+    "quantity": 37,
+    "price": 261.47,
+    "isAvailable": false,
+    "manufactureDate": "2023-07-04T22:24:34.192786",
+    "specifications": [
+      {
+        "specName": "Durability Index",
+        "specPrice": 14.68,
+        "isCustom": true
+      },
+      {
+        "specName": "Color Options",
+        "specPrice": 63.95,
+        "isCustom": false
+      },
+      {
+        "specName": "Color Options",
+        "specPrice": 94.34,
+        "isCustom": false
+      },
+      {
+        "specName": "Power Efficiency",
+        "specPrice": 88.5,
+        "isCustom": false
+      }
+    ]
+  },
+  {
+    "widgetId": "fb6f263c-f868-404c-9d0d-5b5443adbc98",
+    "name": "day",
+    "quantity": 29,
+    "price": 98.8,
+    "isAvailable": true,
+    "manufactureDate": "2023-05-20T03:56:09.723758",
+    "specifications": [
+      {
+        "specName": "Durability Index",
+        "specPrice": 15.58,
+        "isCustom": false
+      },
+      {
+        "specName": "Durability Index",
+        "specPrice": 83.22,
+        "isCustom": true
+      }
+    ]
+  },
+  {
+    "widgetId": "fbf1dcec-16dc-4269-80de-8d658107d53e",
+    "name": "drive",
+    "quantity": 38,
+    "price": 277.85,
+    "isAvailable": true,
+    "manufactureDate": "2024-01-22T05:49:12.388141",
+    "specifications": [
+      {
+        "specName": "Operational Range",
+        "specPrice": 67.79,
+        "isCustom": true
+      },
+      {
+        "specName": "Operational Range",
+        "specPrice": 55.05,
+        "isCustom": true
+      },
+      {
+        "specName": "Material Composition",
+        "specPrice": 73.54,
+        "isCustom": false
+      },
+      {
+        "specName": "Operational Range",
+        "specPrice": 81.47,
+        "isCustom": true
+      }
+    ]
+  }
+]

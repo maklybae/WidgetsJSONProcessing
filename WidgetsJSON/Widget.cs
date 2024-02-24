@@ -64,8 +64,8 @@ namespace WidgetsJSON
                 {
                     throw new ArgumentException("Name cannot be null or empty", nameof(value));
                 }
-                _name = value;
                 OnUpdated(new UpdatedEventArgs());
+                _name = value;
             }
         }
 
@@ -79,8 +79,8 @@ namespace WidgetsJSON
                 {
                     throw new ArgumentException("Quantity should be greater than zero", nameof(value));
                 }
-                _quantity = value;
                 OnUpdated(new UpdatedEventArgs());
+                _quantity = value;
             }
         }
 
@@ -95,8 +95,8 @@ namespace WidgetsJSON
                     throw new ArgumentException("Price should be greater than zero", nameof(value));
                 }
                 OnPriceChanged(new PriceChangedEventArgs(value - _price));
-                _price = value; 
                 OnUpdated(new UpdatedEventArgs());
+                _price = value; 
             }
         }
 
@@ -109,8 +109,8 @@ namespace WidgetsJSON
                 {
                     throw new ArgumentException("Available flag should have a value (true/false)", nameof(value));
                 }
-                _isAvailable = (bool)value; 
                 OnUpdated(new UpdatedEventArgs());
+                _isAvailable = (bool)value; 
             }
         }
 
@@ -124,8 +124,8 @@ namespace WidgetsJSON
                 {
                     throw new ArgumentException("The manufacture date should be later than 1990.", nameof(value));
                 }
-                _manufactureDate = value;
                 OnUpdated(new UpdatedEventArgs());
+                _manufactureDate = value;
             } 
         }
 

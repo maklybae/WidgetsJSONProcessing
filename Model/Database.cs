@@ -41,7 +41,7 @@ public class Database
         _data = JsonSerializer.Deserialize<List<Widget>>(jsonString) ??
             throw new ArgumentException("File is empty or consist of wrong data");
 
-        _autoSaver = new(jsonString);
+        _autoSaver = new(filePath, TrySave);
         _priceRedistributor = new();
 
         RegisterSubscribers();
@@ -72,7 +72,16 @@ public class Database
         _cacheData = data;
     }
 
-    public void Save() { }
+    public void TrySave(string path)
+    {
+        // Assume that auto saving can be failed, however user is not able to fix it.
+        try
+        {
+            File.WriteAllText(path, GetJsonStringData());
+        }
+        catch (Exception) { }
+    }
+
 
     public void Save(string filePath) =>
         File.WriteAllText(filePath, GetJsonStringData());
